@@ -78,6 +78,7 @@ CT.BDOSERV.003.0 - Preencher um BDO de Serviço
     Clique no botão "Salvar" da seção "Bombeio"
     Clique no botão "OK" do modal "Sucesso"
     Inclua foto de anexo na seção "Bombeio"
+    Verifique foto de anexo na seção "Bombeio"
 
     Clique na seção "Aguardo"
     Preencha seção "Aguardo"
@@ -95,6 +96,8 @@ CT.BDOSERV.003.0 - Preencher um BDO de Serviço
     Clique no botão "OK" do modal "Sucesso"
     Inclua comentário na seção "Registro de Anomalias"
     Inclua foto de anexo na seção "Registro de Anomalias"
+    Verifique comentário na seção "Registro de Anomalias"
+    Verifique foto de anexo na seção "Registro de Anomalias"
 
 CT.BDOSERV.004.0 - Editar um BDO de Serviço
     [Documentation]    Teste
@@ -226,13 +229,15 @@ CT.BDOSERV.008.0 - Remover (Cancelar) um BDO de Serviço
 
 
 # CT.BDOSERV.000.0 - D'Teste
-#     Acesse pagina "bdo-de-servico"
+#     Acesse pagina "bdo-de-servico"    
 #     Verifique tag <h1> com "BDO de Serviço"
 
-#     Clique no menu e escolha a opção "Imprimir"
-#     Verifique a impressão
+#     Clique no menu e escolha a opção "Editar"
+#     Verifique código cadastrado
+    
+#     Clique na seção "Desmontagem"
+#     Preencha seção "Desmontagem"
+#     Clique no botão "Salvar" da seção "Desmontagem"
+#     Clique no botão "OK" do modal "Sucesso"
 
-# *** Keywords ***
-# Verifique a impressão
-#     ${status}    Wait For Response
-#     Pass Execution If    ${status}[status] == 200     
+#     Sleep    3

@@ -1,2 +1,6 @@
 logs
 env.resource
+log.html
+output.xml
+playwright-log.txt
+report.html
