@@ -1,0 +1,51 @@
+--- Manual RobotFramework ---
+
+Variáveis
+#Simples
+${SIMPLES}   Vamos ver os tipos de variáveis no robot!
+
+#Tipo Lista
+@{FRUTAS}    morango   banana   maça   uva   abacaxi
+
+#Tipo Dicionário
+&{PESSOA}    nome=Henrique Miranda   email=henrique.miranda@logiquesistemas.com.br   idade=35   sexo=masculino
+
+--- Manual de nome dos casos de testes ---
+
+O nome dos cados de testes serão compostos por siglas, números e descrição onde:
+    - Sigla de caso de teste (CT)
+    - Módulo do PetroDigital (ver listagem)
+    - Numeração (XXX.X), onde:
+        - Os três primeiros números varia de 001 a 999, representando cenários distintos
+        - O útimo número varia de 0 a 9, onde o 0 é o cenário principal e os outros números são cenários alternativos
+    - Cenário a ser testado
+
+EX.: CT.BDOSERV.001.0 - Efetuar login no PetroDigital
+      |    |     |  |               |_ Descrição do cenário a ser testado
+      |    |     |  |_ Numeração da variação do cenário
+      |    |     |_ Numeraçaõ do cenário
+      |    |_ Sigla do módulo testado
+      |_ Sigla do caso de teste
+                
+Padrão da listagem de módulos do PetroDigital
+    - INIT      - Login
+    - DASH      - Dashboard
+    - AST       - AST
+    - PT        - PT
+    - INSONDA   - Inspeção de Sonda
+    - AUDIT     - Auditoria
+    - PLACAO    - Plano de Ação
+    - BDOSONDA  - BDO de Sondas
+    - FISQP     - FISQP
+    - BDOSERV   - BDO de Serviços
+    - DESPAR    - Desparafinação
+    - GMUD      - GM Digital
+    - SGC       - SGC
+    - PASSERV   - Passagem de Serviço
+
+Padrão de numeraçaõ do cenário (CLER)
+    - 001       - Cadastrar
+    - 002       - Listar
+    - 003       - Editar
+    - 004       - Remover
+    - 005 a 999 - Outros cenários
