@@ -5,6 +5,8 @@ Library            Browser
 
 Resource           ../env.resource
 
+Resource           components/Header.resource
+
 *** Keywords ***
 Abre navegador
     New Browser        browser=chromium    headless=False    args=["--ignore-certificate-errors"]
@@ -16,9 +18,6 @@ Submeta formulario com as credenciais
     Fill Text    css=input[name=password]    ${SENHA}
 
     Click        css=button[type=submit] >> text=Entrar
-
-Verifique usuário logado
-    Get Text    css=#menu-user    contains    ${USUARIO}
 
 Se, Modal "${mensagem}" clique em "${botão}"
     ${cond} =    Get Text    h2#swal2-title

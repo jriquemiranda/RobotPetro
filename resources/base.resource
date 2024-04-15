@@ -4,6 +4,7 @@ Documentation            Elementos e ações comuns entre as páginas
 Library            Browser
 
 Resource           ../resources/env.resource
+
 Resource           ../resources/pages/LoginPage.resource
 Resource           ../resources/pages/BDOServicoPage.resource
 
