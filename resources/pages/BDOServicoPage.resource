@@ -26,6 +26,8 @@ ${codigo}    0075-04-2024-BAH-A-BDOSERV                                         
 #         Click    css=button[type=submit] >> text=${texto}
 #     END    
 
+### COMUM ###
+
 Clique no botão "Adicionar"
     [Documentation]    Keyword responsável por selecionar o botão de "Adicionar"
 
@@ -36,38 +38,6 @@ Clique na seção "${seção}"
 
     # Click    xpath=//span[text()="${seção}"]/..//button[@class="p-panel-header-icon p-panel-toggler p-link"]
     Click    xpath=//span[text()='${seção}']/.. >> css=.p-link
-        
-Preencha seção "Cabeçalho"
-    [Documentation]    Keyword responsável pelo preenchimento da seção "Cabeçalho" 
-    ...    Em um futuro esse campo vai ter que salvar alguns dos campos preechidos automaticamente
-
-    ${cabecalho}    Pegue massa de teste "cabecalho" de "bdo_servicos"
-
-    Click    xpath=//label[text()='Projeto']/.. >> css=.p-dropdown
-    Click    xpath=//li[text()='${cabecalho}[projeto]']
-
-    Click    xpath=//label[text()='Zona/Revestimento']/.. >> css=.p-dropdown
-    Click    xpath=//li[text()='${cabecalho}[zona]']
-
-    Click    xpath=//label[text()='Sonda']/.. >> css=.p-dropdown
-    Click    xpath=//li[text()='${cabecalho}[sonda]']
-
-    Type Text    css=#os_cabecalhoBSER    ${cabecalho}[os]
-
-    Type Text    css=#sa_cabecalhoBSER    ${cabecalho}[sa]
-
-    Click    xpath=//label[text()='Sup. Operação']/.. >> css=.p-dropdown
-    Click    xpath=//li[text()='${cabecalho}[supoper]']
-
-    Click    xpath=//label[text()='Sup. Sonda']/.. >> css=.p-dropdown
-    Click    xpath=//li[text()='${cabecalho}[supsond]']
-
-    Type Text    css=#amem_cabecalhoBSER    ${cabecalho}[amem]
-
-Clique no botão "${botão}" do "Cabeçalho"
-    [Documentation]    Keyword responsável por selecionar o botão de "Salvar" da seção "Cabeçalho"
-
-    Click    css=button[type=submit] >> text='${botão}'  
 
 Escolha o botão "${botão}" do modal "${modal}"
     [Documentation]    Keyword responsável por escolher o botão de ??? do modal ???
@@ -114,6 +84,68 @@ Clique no menu e escolha a opção "${opção}"
     Click    xpath=//td[text()='${codigo}']/../td[1]            
     Click    xpath=//span[text()='${opção}']    
 
+Clique no botão "${botão}" da seção "${seção}"
+    [Documentation]    Keyword responsável clicar em um botão ??? em uma seção ???
+
+    Click    xpath=//span[text()='${seção}']/../..//span[text()='${botão}']
+
+Escolha a situação "${situação}" no modal "${modal}"
+    [Documentation]    Keyword responsável por selecionar situação ??? no modal ???
+    
+    Wait For Elements State    xpath=//div[text()='${modal}']    visible    1
+    Click                      xpath=//button[text()='${situação}']
+
+Verifique código cadastrado
+    [Documentation]    Keyword responsável por verificar o código do BDO de Serviço
+    
+    Wait For Condition    Text    xpath=//h2[contains(.,'Código:')]    contains    ${codigo}
+
+Verifique impressão
+    [Documentation]    Keyword responsável por verificar a impressão
+
+    ${status}    Wait For Response
+    Pass Execution If    ${status}[status] == 200    OK
+
+Edite o registro da seção "${seção}"
+    [Documentation]    Keyword responsável por verificar o código do BDO de Serviço
+
+    Click        xpath=//span[text()='${seção}']/../..//button[@title='Editar']
+
+### CABEÇALHO ###
+
+Preencha seção "Cabeçalho"
+    [Documentation]    Keyword responsável pelo preenchimento da seção "Cabeçalho" 
+    ...    Em um futuro esse campo vai ter que salvar alguns dos campos preechidos automaticamente
+
+    ${cabecalho}    Pegue massa de teste "cabecalho" de "bdo_servicos"
+
+    Click    xpath=//label[text()='Projeto']/.. >> css=.p-dropdown
+    Click    xpath=//li[text()='${cabecalho}[projeto]']
+
+    Click    xpath=//label[text()='Zona/Revestimento']/.. >> css=.p-dropdown
+    Click    xpath=//li[text()='${cabecalho}[zona]']
+
+    Click    xpath=//label[text()='Sonda']/.. >> css=.p-dropdown
+    Click    xpath=//li[text()='${cabecalho}[sonda]']
+
+    Type Text    css=#os_cabecalhoBSER    ${cabecalho}[os]
+
+    Type Text    css=#sa_cabecalhoBSER    ${cabecalho}[sa]
+
+    Click    xpath=//label[text()='Sup. Operação']/.. >> css=.p-dropdown
+    Click    xpath=//li[text()='${cabecalho}[supoper]']
+
+    Click    xpath=//label[text()='Sup. Sonda']/.. >> css=.p-dropdown
+    Click    xpath=//li[text()='${cabecalho}[supsond]']
+
+    Type Text    css=#amem_cabecalhoBSER    ${cabecalho}[amem]
+
+Clique no botão "${botão}" do "Cabeçalho"
+    [Documentation]    Keyword responsável por selecionar o botão de "Salvar" da seção "Cabeçalho"
+
+    Click    css=button[type=submit] >> text='${botão}'  
+
+
 Preencha seção "Pessoal e Equipamento"
     [Documentation]    Keyword responsável pelo preenchimento da seção "Pessoal e Equipamento"
 
@@ -129,29 +161,23 @@ Preencha seção "Pessoal e Equipamento"
 
 Preenche subseção "Etapas"    
     [Documentation]    Keyword responsável pelo preenchimento da subseção "Etapas"
-    
-    ${etapas}    Create Dictionary    inicioAtividadeData=01/01/2024
-    ...                               inicioAtividadeHora=00:00
-    ...                               finalAtividadeData=02/02/2024
-    ...                               finalAtividadeHora=00:00
-    ...                               layoutLocacaoData=02/02/2024
-    ...                               layoutLocacaoHora=00:00
-    ...                               posicionamentoTanquesData=02/02/2024
-    ...                               posicionamentoTanquesHora=00:00
+
+    ${pessoalequipamento}    Pegue massa de teste "pessoalequipamento" de "bdo_servicos"
+    ${etapas}    Set Variable    ${pessoalequipamento}[etapas]
 
     Click    xpath=//h2[text()='Etapas']
 
-    Type Text     css=#inicioAtividadeData_etapaBSER    ${etapas.inicioAtividadeData}
-    Type Text     css=#inicioAtividadeHora_etapaBSER    ${etapas.inicioAtividadeHora}
+    Type Text     css=#inicioAtividadeData_etapaBSER    ${etapas}[inicioAtividadeData]
+    Type Text     css=#inicioAtividadeHora_etapaBSER    ${etapas}[inicioAtividadeHora]
     
-    Type Text     css=#finalAtividadeData_etapaBSER    ${etapas.finalAtividadeData}
-    Type Text     css=#finalAtividadeHora_etapaBSER    ${etapas.finalAtividadeHora}
+    Type Text     css=#finalAtividadeData_etapaBSER    ${etapas}[finalAtividadeData]
+    Type Text     css=#finalAtividadeHora_etapaBSER    ${etapas}[finalAtividadeHora]
 
-    Type Text     css=#layoutLocacaoData_etapaBSER    ${etapas.layoutLocacaoData}
-    Type Text     css=#layoutLocacaoHora_etapaBSER    ${etapas.layoutLocacaoHora}
+    Type Text     css=#layoutLocacaoData_etapaBSER    ${etapas}[layoutLocacaoData]
+    Type Text     css=#layoutLocacaoHora_etapaBSER    ${etapas}[layoutLocacaoHora]
 
-    Type Text     css=#posicionamentoTanquesData_etapaBSER    ${etapas.posicionamentoTanquesData}
-    Type Text     css=#posicionamentoTanquesHora_etapaBSER    ${etapas.posicionamentoTanquesHora}
+    Type Text     css=#posicionamentoTanquesData_etapaBSER    ${etapas}[posicionamentoTanquesData]
+    Type Text     css=#posicionamentoTanquesHora_etapaBSER    ${etapas}[posicionamentoTanquesHora]
 
 Preenche subseção "Pessoal"
     [Documentation]    Keyword responsável pelo preenchimento da sub-seção "Pessoal"
@@ -176,31 +202,23 @@ Preenche subseção "Equipamentos"
     Click    xpath=//input[@id='equipamento_BSER']/../..
     Click    xpath=//li[@aria-label][1]
 
-Clique no botão "${botão}" da seção "${seção}"
-    [Documentation]    Keyword responsável clicar em um botão ??? em uma seção ???
-
-    Click    xpath=//span[text()='${seção}']/../..//span[text()='${botão}']
+### MOBILIZAÇÃO ###
 
 Preencha seção "Mobilização"
     [Documentation]    Keyword responsável pelo preenchimento da seção "Mobilização"
 
-    ${mobilizacao}    Create Dictionary    origemNome=Oiapoque
-    ...                                    dataInicio=01/01/2024
-    ...                                    horaInicio='00:00
-    ...                                    destinoNome=Chuí
-    ...                                    dataFim=01/01/2024
-    ...                                    horaFim=23:59
+    ${mobilizacao}    Pegue massa de teste "mobilizacao" de "bdo_servicos"
 
     Click        xpath=//h3[text()='Selecione a Origem']/..//span[text()='Outro']
 
-    Type Text    css=#origemNome_mobilizacaoBSER    ${mobilizacao.origemNome}
-    Type Text    css=#dataInicio_mobilizacaoBSER    ${mobilizacao.dataInicio}
-    Type Text    css=#horaInicio_mobilizacaoBSER    ${mobilizacao.horaInicio}
+    Type Text    css=#origemNome_mobilizacaoBSER    ${mobilizacao}[origemNome]
+    Type Text    css=#dataInicio_mobilizacaoBSER    ${mobilizacao}[dataInicio]
+    Type Text    css=#horaInicio_mobilizacaoBSER    ${mobilizacao}[horaInicio]
 
     Click        xpath=//h3[text()='Selecione o Destino']/..//span[text()='Outro']
-    Type Text    css=#destinoNome_mobilizacaoBSER    ${mobilizacao.destinoNome}
-    Type Text    css=#dataFim_mobilizacaoBSER        ${mobilizacao.dataFim}
-    Type Text    css=#horaFim_mobilizacaoBSER        ${mobilizacao.horaFim}
+    Type Text    css=#destinoNome_mobilizacaoBSER    ${mobilizacao}[destinoNome]
+    Type Text    css=#dataFim_mobilizacaoBSER        ${mobilizacao}[dataFim]
+    Type Text    css=#horaFim_mobilizacaoBSER        ${mobilizacao}[horaFim]
 
     Click        xpath=//div[@class='p-multiselect-label-container']
     ${states}    Get Element States   xpath=//li[@aria-selected='true']
@@ -208,6 +226,8 @@ Preencha seção "Mobilização"
         Click        xpath=//li[@tabindex='0']
     END    
     Click        xpath=//div[@class='p-multiselect-label-container']
+
+### MONTAGEM ###
 
 Preencha seção "Montagem"
     [Documentation]    Keyword responsável pelo preenchimento da seção "Montagem"
@@ -232,6 +252,8 @@ Preencha seção "Montagem"
     Click        xpath=//span[text()='Montagem']/../..//span[text()='Outros']
     Type Text    xpath=//input[@name='descricaoOutros_montagemBSER']                 ${montagem.descricaoOutros}
 
+### CARREGAMENTO ###
+
 Preencha seção "Carregamento"
     [Documentation]    Keyword responsável pelo preenchimento da seção "Carregamento"
 
@@ -253,6 +275,8 @@ Preencha seção "Carregamento"
     Wait For Elements State    xpath=//li[@aria-label][1]    visible    1
     Click                      xpath=//li[@aria-label][1]
 
+### MISTURA ###
+
 Preencha seção "Mistura"
     [Documentation]    Keyword responsável pelo preenchimento da seção "Mistura"
 
@@ -273,6 +297,8 @@ Preencha seção "Mistura"
     Click                      xpath=//input[@id='descricao_mistura']/../..
     Wait For Elements State    xpath=//li[@aria-label][1]    visible    1
     Click                      xpath=//li[@aria-label][1]
+
+### BOMBEIO ###
 
 Preencha seção "Bombeio"
     [Documentation]    Keyword responsável pelo preenchimento da seção "Bombeio"
@@ -322,6 +348,8 @@ Verifique foto de anexo na seção "${seção}"
 
     Click    xpath=//button[@aria-label='Close']
 
+### AGUARDO ###
+
 Preencha seção "Aguardo"
     [Documentation]    Keyword responsável pelo preenchimento da seção "Aguardo"
 
@@ -339,6 +367,8 @@ Preencha seção "Aguardo"
     Click        xpath=//span[text()='Aguardo']/../..//span[text()='Outros']
     Type Text    xpath=//input[@name='descricaoOutros_aguardo']    ${aguardo.descricao}
 
+### DESMONTAGEM ###
+
 Preencha seção "Desmontagem"
     [Documentation]    Keyword responsável pelo preenchimento da seção "Desmontagem"
 
@@ -355,6 +385,8 @@ Preencha seção "Desmontagem"
     
     Click        xpath=//span[text()='Desmontagem']/../..//span[text()='Outros']
     Type Text    xpath=//input[@name='descricaoOutros_desmontagem']    ${desmontagem.descricao}
+
+### REGISTRO DE ANOMALIAS ###
 
 Preencha seção "Registro de Anomalias"
     [Documentation]    Keyword responsável pelo preenchimento da seção "Registro de Anomalias"
@@ -397,26 +429,4 @@ Verifique comentário na seção "${seção}"
     Wait For Elements State    xpath=//div[@class='product-item'][contains(.,'${comentarios}[comentario]')]    visible    1
 
     Click    xpath=//button[@aria-label='Close']
-
-Escolha a situação "${situação}" no modal "${modal}"
-    [Documentation]    Keyword responsável por selecionar situação ??? no modal ???
-    
-    Wait For Elements State    xpath=//div[text()='${modal}']    visible    1
-    Click                      xpath=//button[text()='${situação}']
-
-Verifique código cadastrado
-    [Documentation]    Keyword responsável por verificar o código do BDO de Serviço
-    
-    Wait For Condition    Text    xpath=//h2[contains(.,'Código:')]    contains    ${codigo}
-
-Verifique impressão
-    [Documentation]    Keyword responsável por verificar a impressão
-
-    ${status}    Wait For Response
-    Pass Execution If    ${status}[status] == 200    OK
-
-Edite o registro da seção "${seção}"
-    [Documentation]    Keyword responsável por verificar o código do BDO de Serviço
-
-    Click        xpath=//span[text()='${seção}']/../..//button[@title='Editar']
 

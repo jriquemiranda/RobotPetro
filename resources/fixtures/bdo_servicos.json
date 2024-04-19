@@ -9,10 +9,33 @@
         "supsond": "ZILMAR CAFE SOBRINHO",
         "amem": "654321"
     },
+    "pessoalequipamento": {
+        "etapas": {
+            "inicioAtividadeData": "01/01/2024",
+            "inicioAtividadeHora": "00:00",
+            "finalAtividadeData": "02/02/2024",
+            "finalAtividadeHora": "00:00",
+            "layoutLocacaoData": "02/02/2024",
+            "layoutLocacaoHora": "00:00",
+            "posicionamentoTanquesData": "02/02/2024",
+            "posicionamentoTanquesHora": "00:00"
+        },
+        "pessoal": {},
+        "equipamento": {}
+    },
+    "mobilizacao": {
+        "origemNome": "Oiapoque",
+        "dataInicio": "01/01/2024",
+        "horaInicio": "00:00",
+        "destinoNome": "Chuí",
+        "dataFim": "01/01/2024",
+        "horaFim": "23:59"
+    },
     "anexos": {
         "nome": "Teste.png",
         "caminho": "C:\\DocTestes\\Teste.png"
     },
     "comentarios": {"comentario": "Chamar o IBAMA!!!"}
+    
 
 }

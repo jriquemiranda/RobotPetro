@@ -25,5 +25,7 @@ Get Variable
     Log To Console    Agora esse tambem deve vir filtrado ${código}
 
 Teste de JSON
-    ${data}    Pegue massa de teste "bdo_servicos" referente a "arquivo"
-    Log To Console    ${data}[caminho]
+    ${pessoalequipamento}    Pegue massa de teste "pessoalequipamento" de "bdo_servicos"
+    ${etapas}    Set Variable    ${pessoalequipamento}[etapas]
+
+    Log To Console    ${etapas}
