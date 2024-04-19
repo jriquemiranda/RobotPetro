@@ -8,4 +8,4 @@ Resource           ../../env.resource
 
 *** Keywords ***
 Verifique usuário logado
-    Get Text    css=header #menu-user h5    equals    ${USUARIO}
+    Get Text    css=header #menu-user h5    equals    ${CREDENCIAL}[USUARIO]

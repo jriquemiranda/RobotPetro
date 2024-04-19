@@ -2,6 +2,8 @@
 Documentation            Usado para efetuar testes de keywords
 
 Library            String
+Library            JSONLibrary
+Resource    ../resources/base.resource
 
 *** Variables ***
 # ${código}       Código: 0009-03-2024-BAH-A-BDOSERV
@@ -21,3 +23,7 @@ Get Number From String
 
 Get Variable
     Log To Console    Agora esse tambem deve vir filtrado ${código}
+
+Teste de JSON
+    ${data}    Pegue massa de teste "bdo_servicos" referente a "arquivo"
+    Log To Console    ${data}[caminho]

@@ -2,6 +2,7 @@
 Documentation            Elementos e ações comuns entre as páginas
 
 Library            Browser
+Library            JSONLibrary
 
 Resource           ../resources/env.resource
 
@@ -25,3 +26,9 @@ Verifique tag <${tag}> com "${mensagem}"
 #     IF    "${cond}"=="${mensagem}"
 #         Click    css=button[type=button] >> text=${botão}
 #     END
+
+
+#HELPERS
+Pegue massa de teste "${cenario}" de "${arquivo}"
+    ${json}    Load Json From File    ${EXECDIR}/resources/fixtures/${arquivo}.json    encoding=UTF-8
+    RETURN    ${json}[${cenario}]

@@ -235,9 +235,13 @@ CT.BDOSERV.008.0 - Remover (Cancelar) um BDO de Serviço
 #     Clique no menu e escolha a opção "Editar"
 #     Verifique código cadastrado
     
-#     Clique na seção "Desmontagem"
-#     Preencha seção "Desmontagem"
-#     Clique no botão "Salvar" da seção "Desmontagem"
+#     Clique na seção "Registro de Anomalias"
+#     Edite o registro da seção "Registro de Anomalias"
+#     Preencha seção "Registro de Anomalias"
+#     Clique no botão "Salvar" da seção "Registro de Anomalias"
 #     Clique no botão "OK" do modal "Sucesso"
+
+#     Inclua foto de anexo na seção "Registro de Anomalias"
+#     Verifique foto de anexo na seção "Registro de Anomalias"
 
 #     Sleep    3

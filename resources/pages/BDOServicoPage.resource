@@ -5,14 +5,15 @@ Library            Browser
 Library            String
 
 Resource           ../env.resource
+Resource           ../base.resource
 
 *** Variables ***
 
 #Tipo dicionario
-&{CABECALHO}    Projeto=123456    Zona=10    Sonda=SPT-PR-01   OS=OS TESTE   SA=SA TESTE   SupOper=ABDON LIMA GOES NETO   SupSond=ZILMAR CAFE SOBRINHO   AMEM=${EMPTY}
+# &{CABECALHO}    Projeto=123456    Zona=10    Sonda=SPT-PR-01   OS=OS TESTE   SA=SA TESTE   SupOper=ABDON LIMA GOES NETO   SupSond=ZILMAR CAFE SOBRINHO   AMEM=${EMPTY}
 
-&{ARQUIVO}         Nome=Teste.png    Caminho=C:\\DocTestes\\Teste.png
-${COMENTARIO}      Tem que chamar o IBAMA    
+# &{ARQUIVO}         Nome=Teste.png    Caminho=C:\\DocTestes\\Teste.png
+# ${COMENTARIO}      Tem que chamar o IBAMA    
 
 ${codigo}    0075-04-2024-BAH-A-BDOSERV                                                                # Isso é apenas temporário!!!
 
@@ -40,26 +41,28 @@ Preencha seção "Cabeçalho"
     [Documentation]    Keyword responsável pelo preenchimento da seção "Cabeçalho" 
     ...    Em um futuro esse campo vai ter que salvar alguns dos campos preechidos automaticamente
 
+    ${cabecalho}    Pegue massa de teste "cabecalho" de "bdo_servicos"
+
     Click    xpath=//label[text()='Projeto']/.. >> css=.p-dropdown
-    Click    xpath=//li[text()='${CABECALHO.Projeto}']
+    Click    xpath=//li[text()='${cabecalho}[projeto]']
 
     Click    xpath=//label[text()='Zona/Revestimento']/.. >> css=.p-dropdown
-    Click    xpath=//li[text()='${CABECALHO.Zona}']
+    Click    xpath=//li[text()='${cabecalho}[zona]']
 
     Click    xpath=//label[text()='Sonda']/.. >> css=.p-dropdown
-    Click    xpath=//li[text()='${CABECALHO.Sonda}']
+    Click    xpath=//li[text()='${cabecalho}[sonda]']
 
-    Type Text    css=#os_cabecalhoBSER    ${CABECALHO.OS}
+    Type Text    css=#os_cabecalhoBSER    ${cabecalho}[os]
 
-    Type Text    css=#sa_cabecalhoBSER    ${CABECALHO.SA}
+    Type Text    css=#sa_cabecalhoBSER    ${cabecalho}[sa]
 
     Click    xpath=//label[text()='Sup. Operação']/.. >> css=.p-dropdown
-    Click    xpath=//li[text()='${CABECALHO.SupOper}']
+    Click    xpath=//li[text()='${cabecalho}[supoper]']
 
     Click    xpath=//label[text()='Sup. Sonda']/.. >> css=.p-dropdown
-    Click    xpath=//li[text()='${CABECALHO.SupSond}']
+    Click    xpath=//li[text()='${cabecalho}[supsond]']
 
-    Type Text    css=#amem_cabecalhoBSER    ${CABECALHO.AMEM}
+    Type Text    css=#amem_cabecalhoBSER    ${cabecalho}[amem]
 
 Clique no botão "${botão}" do "Cabeçalho"
     [Documentation]    Keyword responsável por selecionar o botão de "Salvar" da seção "Cabeçalho"
@@ -295,10 +298,13 @@ Preencha seção "Bombeio"
 
 Inclua foto de anexo na seção "${seção}"                                                        
     [Documentation]    Keyword responsável por incluir fotos em uma seção ???
+
+    ${anexos}    Pegue massa de teste "anexos" de "bdo_servicos"
+
     Click    xpath=//span[text()='${seção}']/../..//button[@title='Anexos']
     Wait For Elements State    xpath=//div[@class='p-dialog-header']    visible    1
 
-    Upload File By Selector    css=#anexos    ${ARQUIVO.Caminho}
+    Upload File By Selector    css=#anexos    ${anexos}[caminho]
     Click    xpath=//div[@class='p-dialog-header']/..//button[@type='submit']
     Clique no botão "OK" do modal "Sucesso"
 
@@ -306,10 +312,13 @@ Inclua foto de anexo na seção "${seção}"
 
 Verifique foto de anexo na seção "${seção}"                                                       
     [Documentation]    Keyword responsável por verificar fotos em uma seção ???
+
+    ${anexos}    Pegue massa de teste "anexos" de "bdo_servicos"
+
     Click    xpath=//span[text()='${seção}']/../..//button[@title='Anexos']
     Wait For Elements State    xpath=//div[@class='p-dialog-header']    visible    1
 
-    Wait For Elements State    xpath=//button[@title='Baixar anexo'] >> text='${ARQUIVO.Nome}'    visible    1
+    Wait For Elements State    xpath=//button[@title='Baixar anexo'] >> text='${anexos}[nome]'    visible    1
 
     Click    xpath=//button[@aria-label='Close']
 
@@ -366,10 +375,12 @@ Preencha seção "Registro de Anomalias"
 Inclua comentário na seção "${seção}"
     [Documentation]    Keyword responsável por incluir comentário na seção "Registro de Anomalias"
 
+    ${comentarios}    Pegue massa de teste "comentarios" de "bdo_servicos"
+
     Click        xpath=//span[text()='${seção}']/../..//button[@title='Comentários']
     Wait For Elements State    xpath=//div[@class='p-dialog-header']    visible    1
     
-    Type Text    css=#comentario    ${comentario}
+    Type Text    css=#comentario    ${comentarios}[comentario]
     Click        xpath=//div[@class='p-dialog-header']/..//button[@type='submit']
     Clique no botão "OK" do modal "Sucesso"
 
@@ -378,10 +389,12 @@ Inclua comentário na seção "${seção}"
 Verifique comentário na seção "${seção}"
     [Documentation]    Keyword responsável por incluir comentário na seção "Registro de Anomalias"
 
+    ${comentarios}    Pegue massa de teste "comentarios" de "bdo_servicos"
+
     Click        xpath=//span[text()='${seção}']/../..//button[@title='Comentários']
     Wait For Elements State    xpath=//div[@class='p-dialog-header']    visible    1
     
-    Wait For Elements State    xpath=//div[@class='product-item'][contains(.,'${comentario}')]    visible    1
+    Wait For Elements State    xpath=//div[@class='product-item'][contains(.,'${comentarios}[comentario]')]    visible    1
 
     Click    xpath=//button[@aria-label='Close']
 

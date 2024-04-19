@@ -1,0 +1,18 @@
+{
+    "cabecalho": {
+        "projeto": "123456",
+        "zona": "10",
+        "sonda": "SPT-PR-01",
+        "os": "OÇ TESTE",
+        "sa": "ÇA TESTE",
+        "supoper": "ABDON LIMA GOES NETO",
+        "supsond": "ZILMAR CAFE SOBRINHO",
+        "amem": "654321"
+    },
+    "anexos": {
+        "nome": "Teste.png",
+        "caminho": "C:\\DocTestes\\Teste.png"
+    },
+    "comentarios": {"comentario": "Chamar o IBAMA!!!"}
+
+}

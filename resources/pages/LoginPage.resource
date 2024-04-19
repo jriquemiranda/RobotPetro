@@ -14,8 +14,8 @@ Abre navegador
     New Page           ${BASE_URL}
     
 Submeta formulario com as credenciais
-    Fill Text    css=#login                  ${LOGIN}
-    Fill Text    css=input[name=password]    ${SENHA}
+    Fill Text    css=#login                  ${CREDENCIAL}[LOGIN]
+    Fill Text    css=input[name=password]    ${CREDENCIAL}[SENHA]
 
     Click        css=button[type=submit] >> text=Entrar
 
