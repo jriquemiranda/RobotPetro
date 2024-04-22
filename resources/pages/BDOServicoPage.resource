@@ -80,7 +80,9 @@ Verifique situação "${situação}"
 
 Clique no menu e escolha a opção "${opção}"
     [Documentation]    Keyword responsável por selecionar a opção do menu hamburger
-    
+
+    Type Text    xpath=(//input[@placeholder='Filtrar'])[1]    ${codigo}
+
     Click    xpath=//td[text()='${codigo}']/../td[1]            
     Click    xpath=//span[text()='${opção}']    
 
@@ -232,11 +234,13 @@ Preencha seção "Mobilização"
 Preencha seção "Montagem"
     [Documentation]    Keyword responsável pelo preenchimento da seção "Montagem"
 
-    ${montagem}    Create Dictionary    dataInicio=01/01/2024
-    ...                                 horaInicio=00:00
-    ...                                 dataFim=01/01/2024
-    ...                                 horaFim=23:59
-    ...                                 descricaoOutros=Montagem da rebimboca da parafuseta
+    ${montagem}    Pegue massa de teste "montagem" de "bdo_servicos"
+
+    # ${montagem}    Create Dictionary    dataInicio=01/01/2024
+    # ...                                 horaInicio=00:00
+    # ...                                 dataFim=01/01/2024
+    # ...                                 horaFim=23:59
+    # ...                                 descricaoOutros=Montagem da rebimboca da parafuseta
 
     # Type Text    css=#dataInicio_montagemBSER    01/01/2024
     # Type Text    css=#horaInicio_montagemBSER    00:00
@@ -245,29 +249,31 @@ Preencha seção "Montagem"
     # Click        xpath=//span[text()='Montagem']/../..//span[text()='Outros']
     # Type Text    xpath=//input[@name='descricaoOutros_montagemBSER']    Montagem da rebimboca da parafuseta
 
-    Type Text    css=#dataInicio_montagemBSER                                        ${montagem.dataInicio}
-    Type Text    css=#horaInicio_montagemBSER                                        ${montagem.horaInicio}
-    Type Text    css=#dataFim_montagemBSER                                           ${montagem.dataFim}
-    Type Text    css=#horaFim_montagemBSER                                           ${montagem.horaFim}
+    Type Text    css=#dataInicio_montagemBSER                                        ${montagem}[dataInicio]
+    Type Text    css=#horaInicio_montagemBSER                                        ${montagem}[horaInicio]
+    Type Text    css=#dataFim_montagemBSER                                           ${montagem}[dataFim]
+    Type Text    css=#horaFim_montagemBSER                                           ${montagem}[horaFim]
     Click        xpath=//span[text()='Montagem']/../..//span[text()='Outros']
-    Type Text    xpath=//input[@name='descricaoOutros_montagemBSER']                 ${montagem.descricaoOutros}
+    Type Text    xpath=//input[@name='descricaoOutros_montagemBSER']                 ${montagem}[descricaoOutros]
 
 ### CARREGAMENTO ###
 
 Preencha seção "Carregamento"
     [Documentation]    Keyword responsável pelo preenchimento da seção "Carregamento"
 
-    ${carregamento}    Create Dictionary    dataInicio=01/01/2024
-    ...                                     horaInicio=00:00
-    ...                                     dataFim=01/01/2024
-    ...                                     horaFim=23:59
-    ...                                     quantidade=123
+    ${carregamento}    Pegue massa de teste "carregamento" de "bdo_servicos"
 
-    Type Text                  css=#dataInicio_carregamentoBSER    ${carregamento.dataInicio}
-    Type Text                  css=#horaInicio_carregamentoBSER    ${carregamento.horaInicio}
-    Type Text                  css=#dataFim_carregamentoBSER       ${carregamento.dataFim}
-    Type Text                  css=#horaFim_carregamentoBSER       ${carregamento.horaFim}
-    Type Text                  css=#quantidade_carregamentoBSER    ${carregamento.quantidade}
+    # ${carregamento}    Create Dictionary    dataInicio=01/01/2024
+    # ...                                     horaInicio=00:00
+    # ...                                     dataFim=01/01/2024
+    # ...                                     horaFim=23:59
+    # ...                                     quantidade=123
+
+    Type Text                  css=#dataInicio_carregamentoBSER    ${carregamento}[dataInicio]
+    Type Text                  css=#horaInicio_carregamentoBSER    ${carregamento}[horaInicio]
+    Type Text                  css=#dataFim_carregamentoBSER       ${carregamento}[dataFim]
+    Type Text                  css=#horaFim_carregamentoBSER       ${carregamento}[horaFim]
+    Type Text                  css=#quantidade_carregamentoBSER    ${carregamento}[quantidade]
     Click                      xpath=//input[@id='descricao_carregamentoBSER']/../..
     Wait For Elements State    xpath=//li[@aria-label][1]    visible    1
     Click                      xpath=//li[@aria-label][1]
@@ -280,19 +286,21 @@ Preencha seção "Carregamento"
 Preencha seção "Mistura"
     [Documentation]    Keyword responsável pelo preenchimento da seção "Mistura"
 
-    ${mistura}    Create Dictionary    dataInicio=01/01/2024
-    ...                                horaInicio=00:00
-    ...                                dataFim=01/01/2024
-    ...                                horaFim=23:59
-    ...                                volume=123
-    ...                                peso=123
+    ${mistura}    Pegue massa de teste "mistura" de "bdo_servicos"
 
-    Type Text                  css=#dataInicio_mistura          ${mistura.dataInicio}
-    Type Text                  css=#horaInicio_mistura          ${mistura.horaInicio}
-    Type Text                  css=#dataFim_mistura             ${mistura.dataFim}
-    Type Text                  css=#horaFim_mistura             ${mistura.horaFim}
-    Type Text                  xpath=//input[@name='volume']    ${mistura.volume}
-    Type Text                  xpath=//input[@name='peso']      ${mistura.peso}
+    # ${mistura}    Create Dictionary    dataInicio=01/01/2024
+    # ...                                horaInicio=00:00
+    # ...                                dataFim=01/01/2024
+    # ...                                horaFim=23:59
+    # ...                                volume=123
+    # ...                                peso=123
+
+    Type Text                  css=#dataInicio_mistura          ${mistura}[dataInicio]
+    Type Text                  css=#horaInicio_mistura          ${mistura}[horaInicio]
+    Type Text                  css=#dataFim_mistura             ${mistura}[dataFim]
+    Type Text                  css=#horaFim_mistura             ${mistura}[horaFim]
+    Type Text                  xpath=//input[@name='volume']    ${mistura}[volume]
+    Type Text                  xpath=//input[@name='peso']      ${mistura}[peso]
 
     Click                      xpath=//input[@id='descricao_mistura']/../..
     Wait For Elements State    xpath=//li[@aria-label][1]    visible    1
@@ -303,21 +311,23 @@ Preencha seção "Mistura"
 Preencha seção "Bombeio"
     [Documentation]    Keyword responsável pelo preenchimento da seção "Bombeio"
 
-    ${bombeio}    Create Dictionary    dataInicio=01/01/2024
-    ...                                horaInicio=00:00
-    ...                                dataFim=01/01/2024
-    ...                                horaFim=23:59
-    ...                                volume=123
-    ...                                pressao=123
-    ...                                vazao=123
+    ${bombeio}    Pegue massa de teste "bombeio" de "bdo_servicos"
 
-    Type Text                  css=#dataInicio_bombeioBSER    ${bombeio.dataInicio}
-    Type Text                  css=#horaInicio_bombeioBSER    ${bombeio.horaInicio}
-    Type Text                  css=#dataFim_bombeioBSER       ${bombeio.dataFim}
-    Type Text                  css=#horaFim_bombeioBSER       ${bombeio.horaFim}
-    Type Text                  css=#volume_bombeioBSER        ${bombeio.volume}
-    Type Text                  css=#pressao_bombeioBSER       ${bombeio.pressao}
-    Type Text                  css=#vazao_bombeioBSER         ${bombeio.vazao}
+    # ${bombeio}    Create Dictionary    dataInicio=01/01/2024
+    # ...                                horaInicio=00:00
+    # ...                                dataFim=01/01/2024
+    # ...                                horaFim=23:59
+    # ...                                volume=123
+    # ...                                pressao=123
+    # ...                                vazao=123
+
+    Type Text                  css=#dataInicio_bombeioBSER    ${bombeio}[dataInicio]
+    Type Text                  css=#horaInicio_bombeioBSER    ${bombeio}[horaInicio]
+    Type Text                  css=#dataFim_bombeioBSER       ${bombeio}[dataFim]
+    Type Text                  css=#horaFim_bombeioBSER       ${bombeio}[horaFim]
+    Type Text                  css=#volume_bombeioBSER        ${bombeio}[volume]
+    Type Text                  css=#pressao_bombeioBSER       ${bombeio}[pressao]
+    Type Text                  css=#vazao_bombeioBSER         ${bombeio}[vazao]
     Click                      xpath=//input[@id='descricao_bombeioBSER']/../..
     Wait For Elements State    xpath=//li[@aria-label][1]     visible    1
     Click                      xpath=//li[@aria-label][1]
@@ -353,46 +363,40 @@ Verifique foto de anexo na seção "${seção}"
 Preencha seção "Aguardo"
     [Documentation]    Keyword responsável pelo preenchimento da seção "Aguardo"
 
-    ${aguardo}    Create Dictionary    dataInicio=01/01/2024
-    ...                                horaInicio=00:00
-    ...                                dataFim=01/01/2024
-    ...                                horaFim=23:59
-    ...                                descricao=Perando...
+    ${aguardo}    Pegue massa de teste "aguardo" de "bdo_servicos"
 
-    Type Text    css=#dataInicio_aguardo    ${aguardo.dataInicio}
-    Type Text    css=#horaInicio_aguardo    ${aguardo.horaInicio}
-    Type Text    css=#dataFim_aguardo       ${aguardo.dataFim}
-    Type Text    css=#horaFim_aguardo       ${aguardo.horaFim}
+    Type Text    css=#dataInicio_aguardo    ${aguardo}[dataInicio]
+    Type Text    css=#horaInicio_aguardo    ${aguardo}[horaInicio]
+    Type Text    css=#dataFim_aguardo       ${aguardo}[dataFim]
+    Type Text    css=#horaFim_aguardo       ${aguardo}[horaFim]
     
     Click        xpath=//span[text()='Aguardo']/../..//span[text()='Outros']
-    Type Text    xpath=//input[@name='descricaoOutros_aguardo']    ${aguardo.descricao}
+    Type Text    xpath=//input[@name='descricaoOutros_aguardo']    ${aguardo}[descricao]
 
 ### DESMONTAGEM ###
 
 Preencha seção "Desmontagem"
     [Documentation]    Keyword responsável pelo preenchimento da seção "Desmontagem"
 
-    ${desmontagem}    Create Dictionary    dataInicio=01/01/2024
-    ...                                    horaInicio=00:00
-    ...                                    dataFim=01/01/2024
-    ...                                    horaFim=23:59
-    ...                                    descricao=Desmontagem da montagem!
+    ${desmontagem}    Pegue massa de teste "desmontagem" de "bdo_servicos"
 
-    Type Text    css=#dataInicio_desmontagem    ${desmontagem.dataInicio}
-    Type Text    css=#horaInicio_desmontagem    ${desmontagem.horaInicio}
-    Type Text    css=#dataFim_desmontagem       ${desmontagem.dataFim}
-    Type Text    css=#horaFim_desmontagem       ${desmontagem.horaFim}
+    Type Text    css=#dataInicio_desmontagem    ${desmontagem}[dataInicio]
+    Type Text    css=#horaInicio_desmontagem    ${desmontagem}[horaInicio]
+    Type Text    css=#dataFim_desmontagem       ${desmontagem}[dataFim]
+    Type Text    css=#horaFim_desmontagem       ${desmontagem}[horaFim]
     
     Click        xpath=//span[text()='Desmontagem']/../..//span[text()='Outros']
-    Type Text    xpath=//input[@name='descricaoOutros_desmontagem']    ${desmontagem.descricao}
+    Type Text    xpath=//input[@name='descricaoOutros_desmontagem']    ${desmontagem}[descricao]
 
 ### REGISTRO DE ANOMALIAS ###
 
 Preencha seção "Registro de Anomalias"
     [Documentation]    Keyword responsável pelo preenchimento da seção "Registro de Anomalias"
+
+    ${anomalia}    Pegue massa de teste "anomalia" de "bdo_servicos"
     
-    ${anomalia}    Create Dictionary    data=01/01/2024
-    ...                                 descricao=Lobo guará na plataforma!
+    # ${anomalia}    Create Dictionary    data=01/01/2024
+    # ...                                 descricao=Lobo guará na plataforma!
 
     ${temp}    Get Text    xpath=//span[text()='Registro de Anomalias']/../..//button[contains(@class,'p-button')][@disabled]
     IF    '${temp}' == 'Não'
@@ -400,9 +404,9 @@ Preencha seção "Registro de Anomalias"
         Clique no botão "Sim" do modal "Possui anomalia"
     END
     
-    Type Text    css=#data_anomaliaBSER    ${anomalia.data}
+    Type Text    css=#data_anomaliaBSER    ${anomalia}[data]
     Click        xpath=//span[text()='Registro de Anomalias']/../..//span[text()='Outro']
-    Type Text    css=#descricaoNome_anomaliaBSER    ${anomalia.descricao}
+    Type Text    css=#descricaoNome_anomaliaBSER    ${anomalia}[descricao]
 
 Inclua comentário na seção "${seção}"
     [Documentation]    Keyword responsável por incluir comentário na seção "Registro de Anomalias"

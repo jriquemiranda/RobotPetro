@@ -31,6 +31,54 @@
         "dataFim": "01/01/2024",
         "horaFim": "23:59"
     },
+    "montagem": {
+        "dataInicio":"01/01/2024",
+        "horaInicio":"00:00",
+        "dataFim":"01/01/2024",
+        "horaFim":"23:59",
+        "descricaoOutros":"Montagem da rebimboca da parafuseta"
+    },
+    "carregamento": {
+        "dataInicio":"01/01/2024",
+        "horaInicio":"00:00",
+        "dataFim":"01/01/2024",
+        "horaFim":"23:59",
+        "quantidade":"123"
+    },
+    "mistura": {
+        "dataInicio":"01/01/2024",
+        "horaInicio":"00:00",
+        "dataFim":"01/01/2024",
+        "horaFim":"23:59",
+        "volume":"123",
+        "peso":"123"
+    },
+    "bombeio": {
+        "dataInicio":"01/01/2024",
+        "horaInicio":"00:00",
+        "dataFim":"01/01/2024",
+        "horaFim":"23:59",
+        "volume":"123",
+        "pressao":"123",
+        "vazao":"123"
+    },
+    "aguardo": {
+        "dataInicio":"01/01/2024",
+        "horaInicio":"00:00",
+        "dataFim":"01/01/2024",
+        "horaFim":"23:59",
+        "descricao":"Perando..."
+    },
+    "desmontagem": {
+        "dataInicio":"01/01/2024",
+        "horaInicio":"00:00",
+        "dataFim":"01/01/2024",
+        "horaFim":"23:59",
+        "descricao":"Desmontagem da montagem!"},
+    "anomalia": {
+        "data":"01/01/2024",
+        "descricao":"Lobo guará na plataforma!"
+    },
     "anexos": {
         "nome": "Teste.png",
         "caminho": "C:\\DocTestes\\Teste.png"
