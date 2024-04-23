@@ -1,51 +1,63 @@
 {
-    "cabecalho": {
-        "projeto": "123456",
-        "zona": "10",
-        "sonda": "SPT-PR-01",
-        "os": "OÇ TESTE",
-        "sa": "ÇA TESTE",
-        "supoper": "ABDON LIMA GOES NETO",
-        "supsond": "ZILMAR CAFE SOBRINHO",
-        "amem": "654321"
+    "cabecalho":{
+        "projeto":"123456",
+        "zona":"10",
+        "sonda":"SPT-PR-01",
+        "os":"OÇ TESTE",
+        "sa":"ÇA TESTE",
+        "supoper":"ABDON LIMA GOES NETO",
+        "supsond":"ZILMAR CAFE SOBRINHO",
+        "amem":"654321"
     },
-    "pessoalequipamento": {
-        "etapas": {
-            "inicioAtividadeData": "01/01/2024",
-            "inicioAtividadeHora": "00:00",
-            "finalAtividadeData": "02/02/2024",
-            "finalAtividadeHora": "00:00",
-            "layoutLocacaoData": "02/02/2024",
-            "layoutLocacaoHora": "00:00",
-            "posicionamentoTanquesData": "02/02/2024",
-            "posicionamentoTanquesHora": "00:00"
+    "pessoalequipamento":{
+        "etapas":{
+            "inicioAtividadeData":"01/01/2024",
+            "inicioAtividadeHora":"00:00",
+            "finalAtividadeData":"02/02/2024",
+            "finalAtividadeHora":"00:00",
+            "layoutLocacaoData":"02/02/2024",
+            "layoutLocacaoHora":"00:00",
+            "posicionamentoTanquesData":"02/02/2024",
+            "posicionamentoTanquesHora":"00:00"
         },
-        "pessoal": {},
-        "equipamento": {}
+        "pessoal":{
+            "origem":"Interno",
+            "pessoa":"ABDON LIMA GOES NETO"
+        },
+        "equipamentos":{
+            "local":"Bahia",
+            "equipamento":"Equipamento de Teste"
+        },
+        "produtos":{
+            "local":"Bahia",
+            "produto":"Produto de Teste",
+            "quantidade":"123",
+            "lote":"ABC"
+        }
     },
-    "mobilizacao": {
-        "origemNome": "Oiapoque",
-        "dataInicio": "01/01/2024",
-        "horaInicio": "00:00",
-        "destinoNome": "Chuí",
-        "dataFim": "01/01/2024",
-        "horaFim": "23:59"
+    "mobilizacao":{
+        "origemNome":"Oiapoque",
+        "dataInicio":"01/01/2024",
+        "horaInicio":"00:00",
+        "destinoNome":"Chuí",
+        "dataFim":"01/01/2024",
+        "horaFim":"23:59"
     },
-    "montagem": {
+    "montagem":{
         "dataInicio":"01/01/2024",
         "horaInicio":"00:00",
         "dataFim":"01/01/2024",
         "horaFim":"23:59",
         "descricaoOutros":"Montagem da rebimboca da parafuseta"
     },
-    "carregamento": {
+    "carregamento":{
         "dataInicio":"01/01/2024",
         "horaInicio":"00:00",
         "dataFim":"01/01/2024",
         "horaFim":"23:59",
         "quantidade":"123"
     },
-    "mistura": {
+    "mistura":{
         "dataInicio":"01/01/2024",
         "horaInicio":"00:00",
         "dataFim":"01/01/2024",
@@ -53,7 +65,7 @@
         "volume":"123",
         "peso":"123"
     },
-    "bombeio": {
+    "bombeio":{
         "dataInicio":"01/01/2024",
         "horaInicio":"00:00",
         "dataFim":"01/01/2024",
@@ -62,28 +74,28 @@
         "pressao":"123",
         "vazao":"123"
     },
-    "aguardo": {
+    "aguardo":{
         "dataInicio":"01/01/2024",
         "horaInicio":"00:00",
         "dataFim":"01/01/2024",
         "horaFim":"23:59",
         "descricao":"Perando..."
     },
-    "desmontagem": {
+    "desmontagem":{
         "dataInicio":"01/01/2024",
         "horaInicio":"00:00",
         "dataFim":"01/01/2024",
         "horaFim":"23:59",
         "descricao":"Desmontagem da montagem!"},
-    "anomalia": {
+    "anomalia":{
         "data":"01/01/2024",
         "descricao":"Lobo guará na plataforma!"
     },
-    "anexos": {
-        "nome": "Teste.png",
-        "caminho": "C:\\DocTestes\\Teste.png"
+    "anexos":{
+        "nome":"Teste.png",
+        "caminho":"C:\\DocTestes\\Teste.png"
     },
-    "comentarios": {"comentario": "Chamar o IBAMA!!!"}
-    
-
+    "comentarios":{
+        "comentario":"Chamar o IBAMA!!!"
+    }
 }

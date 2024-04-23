@@ -40,6 +40,8 @@ CT.BDOSERV.003.0 - Preencher um BDO de Serviço
     [Documentation]    Teste
     [Tags]    Feliz
 
+    ${pessoalequipamento}    Pegue massa de teste "pessoalequipamento" de "bdo_servicos"
+
     Acesse pagina "bdo-de-servico"    
     Verifique tag <h1> com "BDO de Serviço"
 
@@ -49,9 +51,7 @@ CT.BDOSERV.003.0 - Preencher um BDO de Serviço
     Clique na seção "Cabeçalho"         
                                   
     Clique na seção "Pessoal e Equipamento"
-    Preencha seção "Pessoal e Equipamento"
-    Clique no botão "Salvar" da seção "Pessoal e Equipamento"
-    Clique no botão "OK" do modal "Sucesso"
+    Preencha e salve as subseções "Pessoal e Equipamento" com ${pessoalequipamento}
     
     Clique na seção "Mobilização"
     Preencha seção "Mobilização"
@@ -228,15 +228,23 @@ CT.BDOSERV.008.0 - Remover (Cancelar) um BDO de Serviço
     Verifique status "Cancelado"
 
 
-# CT.BDOSERV.000.0 - D'Teste
-#     Acesse pagina "bdo-de-servico"    
-#     Verifique tag <h1> com "BDO de Serviço"
+CT.BDOSERV.000.0 - D'Teste
 
-#     Clique no menu e escolha a opção "Editar"
-#     Verifique código cadastrado
+    ${pessoalequipamento}    Pegue massa de teste "pessoalequipamento" de "bdo_servicos"
+
+    Acesse pagina "bdo-de-servico"    
+    Verifique tag <h1> com "BDO de Serviço"
+
+    Clique no menu e escolha a opção "Editar"
+    Verifique código cadastrado
+    
+    Clique na seção "Cabeçalho"         
                                   
-#     Clique na seção "Pessoal e Equipamento"
+    Clique na seção "Pessoal e Equipamento"
 
-#     Preenche subseção "Etapas"
+    Preenche subseção "Equipamentos" com ${pessoalequipamento}[equipamentos]
+    Sleep    3
+    Clique no botão "Salvar" da seção "Pessoal e Equipamento"
+    Clique no botão "OK" do modal "Sucesso"
 
-#     Sleep    5
+    Sleep    5

@@ -4,27 +4,14 @@ Documentation            Elementos e ações da página de BDO de Serviço
 Library            Browser
 Library            String
 
-Resource           ../env.resource
+#Resource           ../env.resource
 Resource           ../base.resource
 
 *** Variables ***
 
-#Tipo dicionario
-# &{CABECALHO}    Projeto=123456    Zona=10    Sonda=SPT-PR-01   OS=OS TESTE   SA=SA TESTE   SupOper=ABDON LIMA GOES NETO   SupSond=ZILMAR CAFE SOBRINHO   AMEM=${EMPTY}
-
-# &{ARQUIVO}         Nome=Teste.png    Caminho=C:\\DocTestes\\Teste.png
-# ${COMENTARIO}      Tem que chamar o IBAMA    
-
 ${codigo}    0075-04-2024-BAH-A-BDOSERV                                                                # Isso é apenas temporário!!!
 
 *** Keywords ***
-
-# Clique no botão "${texto}"
-#     IF    "${texto}" == "Adicionar"
-#         Click    css=.p-button-primary >> text=${texto}
-#     ELSE IF    "${texto}" == "Salvar"
-#         Click    css=button[type=submit] >> text=${texto}
-#     END    
 
 ### COMUM ###
 
@@ -82,6 +69,7 @@ Clique no menu e escolha a opção "${opção}"
     [Documentation]    Keyword responsável por selecionar a opção do menu hamburger
 
     Type Text    xpath=(//input[@placeholder='Filtrar'])[1]    ${codigo}
+    Wait For Elements State    xpath=//span[text()='Exibindo do 1 ao 1 de 1 registros']    visible    3
 
     Click    xpath=//td[text()='${codigo}']/../td[1]            
     Click    xpath=//span[text()='${opção}']    
@@ -117,7 +105,6 @@ Edite o registro da seção "${seção}"
 
 Preencha seção "Cabeçalho"
     [Documentation]    Keyword responsável pelo preenchimento da seção "Cabeçalho" 
-    ...    Em um futuro esse campo vai ter que salvar alguns dos campos preechidos automaticamente
 
     ${cabecalho}    Pegue massa de teste "cabecalho" de "bdo_servicos"
 
@@ -148,24 +135,27 @@ Clique no botão "${botão}" do "Cabeçalho"
     Click    css=button[type=submit] >> text='${botão}'  
 
 
-Preencha seção "Pessoal e Equipamento"
+Preencha e salve as subseções "Pessoal e Equipamento" com ${pessoalequipamento}
     [Documentation]    Keyword responsável pelo preenchimento da seção "Pessoal e Equipamento"
 
-    Preenche subseção "Etapas"
+    Preenche subseção "Etapas" com ${pessoalequipamento}[etapas]
     Clique no botão "Salvar" da seção "Pessoal e Equipamento"
     Clique no botão "OK" do modal "Sucesso"
     
-    Preenche subseção "Pessoal"
+    Preenche subseção "Pessoal" com ${pessoalequipamento}[pessoal]
     Clique no botão "Salvar" da seção "Pessoal e Equipamento"
     Clique no botão "OK" do modal "Sucesso"
     
-    Preenche subseção "Equipamentos"
+    Preenche subseção "Equipamentos" com ${pessoalequipamento}[equipamentos]
+    Clique no botão "Salvar" da seção "Pessoal e Equipamento"
+    Clique no botão "OK" do modal "Sucesso"
 
-Preenche subseção "Etapas"    
+    Preenche subseção "Produtos" com ${pessoalequipamento}[produtos]
+    Clique no botão "Salvar" da seção "Pessoal e Equipamento"
+    Clique no botão "OK" do modal "Sucesso"
+
+Preenche subseção "Etapas" com ${etapas}
     [Documentation]    Keyword responsável pelo preenchimento da subseção "Etapas"
-
-    ${pessoalequipamento}    Pegue massa de teste "pessoalequipamento" de "bdo_servicos"
-    ${etapas}    Set Variable    ${pessoalequipamento}[etapas]
 
     Click    xpath=//h2[text()='Etapas']
 
@@ -181,28 +171,44 @@ Preenche subseção "Etapas"
     Type Text     css=#posicionamentoTanquesData_etapaBSER    ${etapas}[posicionamentoTanquesData]
     Type Text     css=#posicionamentoTanquesHora_etapaBSER    ${etapas}[posicionamentoTanquesHora]
 
-Preenche subseção "Pessoal"
+Preenche subseção "Pessoal" com ${pessoal}
     [Documentation]    Keyword responsável pelo preenchimento da sub-seção "Pessoal"
 
     Click    xpath=//h2[text()='Pessoal']
 
-    Click    xpath=//label[text()='Selecione a origem']/..
-    Click    xpath=//li[@aria-label][1]
+    Click    xpath=//input[@id='origem_pessoalBSER']/../..
+    Click    css=li[aria-label*='${pessoal}[origem]']
 
-    Wait For Elements State    xpath=//label[text()='Selecione a pessoa']/.. >> css=.p-dropdown.p-component.p-inputwrapper.p-dropdown-clearable    enabled    5
-    Click    xpath=//label[text()='Selecione a pessoa']/..
-    Click    xpath=//li[@aria-label][1]
+    #Wait For Elements State    xpath=//label[text()='Selecione a pessoa']/.. >> css=.p-dropdown.p-component.p-inputwrapper.p-dropdown-clearable    enabled    5
+    Click    xpath=//input[@id='pessoaId_pessoalBSER']/../..
+    Click    css=li[aria-label*='${pessoal}[pessoa]']
 
-Preenche subseção "Equipamentos"
+Preenche subseção "Equipamentos" com ${equipamentos}
     [Documentation]    Keyword responsável pelo preenchimento da sub-seção "Equipamentos"
 
     Click    xpath=//h2[text()='Equipamentos']
 
     Click    xpath=//input[@id='ativo_BSER']/../..
-    Click    xpath=//li[@aria-label][1]
+    Click    css=li[aria-label*='${equipamentos}[local]']
 
     Click    xpath=//input[@id='equipamento_BSER']/../..
-    Click    xpath=//li[@aria-label][1]
+    Click    css=li[aria-label*='${equipamentos}[equipamento]']
+
+Preenche subseção "Produtos" com ${produtos}
+    [Documentation]    Keyword responsável pelo preenchimento da sub-seção "Produtos"
+
+    Click    xpath=//h2[text()='Produtos']
+
+    Click    xpath=//input[@id='ativo_BSER']/../..
+    Click    css=li[aria-label*='${produtos}[local]']
+
+    Click    xpath=//input[@id='produto_BSER']/../..
+    Click    css=li[aria-label*='${produtos}[produto]']
+
+    Type Text    css=#quantidade_BSER    ${produtos}[quantidade]
+
+    Type Text    css=#lote_BSER    ${produtos}[lote]
+
 
 ### MOBILIZAÇÃO ###
 
@@ -236,19 +242,6 @@ Preencha seção "Montagem"
 
     ${montagem}    Pegue massa de teste "montagem" de "bdo_servicos"
 
-    # ${montagem}    Create Dictionary    dataInicio=01/01/2024
-    # ...                                 horaInicio=00:00
-    # ...                                 dataFim=01/01/2024
-    # ...                                 horaFim=23:59
-    # ...                                 descricaoOutros=Montagem da rebimboca da parafuseta
-
-    # Type Text    css=#dataInicio_montagemBSER    01/01/2024
-    # Type Text    css=#horaInicio_montagemBSER    00:00
-    # Type Text    css=#dataFim_montagemBSER       01/01/2024
-    # Type Text    css=#horaFim_montagemBSER       23:59
-    # Click        xpath=//span[text()='Montagem']/../..//span[text()='Outros']
-    # Type Text    xpath=//input[@name='descricaoOutros_montagemBSER']    Montagem da rebimboca da parafuseta
-
     Type Text    css=#dataInicio_montagemBSER                                        ${montagem}[dataInicio]
     Type Text    css=#horaInicio_montagemBSER                                        ${montagem}[horaInicio]
     Type Text    css=#dataFim_montagemBSER                                           ${montagem}[dataFim]
@@ -262,12 +255,6 @@ Preencha seção "Carregamento"
     [Documentation]    Keyword responsável pelo preenchimento da seção "Carregamento"
 
     ${carregamento}    Pegue massa de teste "carregamento" de "bdo_servicos"
-
-    # ${carregamento}    Create Dictionary    dataInicio=01/01/2024
-    # ...                                     horaInicio=00:00
-    # ...                                     dataFim=01/01/2024
-    # ...                                     horaFim=23:59
-    # ...                                     quantidade=123
 
     Type Text                  css=#dataInicio_carregamentoBSER    ${carregamento}[dataInicio]
     Type Text                  css=#horaInicio_carregamentoBSER    ${carregamento}[horaInicio]
@@ -288,13 +275,6 @@ Preencha seção "Mistura"
 
     ${mistura}    Pegue massa de teste "mistura" de "bdo_servicos"
 
-    # ${mistura}    Create Dictionary    dataInicio=01/01/2024
-    # ...                                horaInicio=00:00
-    # ...                                dataFim=01/01/2024
-    # ...                                horaFim=23:59
-    # ...                                volume=123
-    # ...                                peso=123
-
     Type Text                  css=#dataInicio_mistura          ${mistura}[dataInicio]
     Type Text                  css=#horaInicio_mistura          ${mistura}[horaInicio]
     Type Text                  css=#dataFim_mistura             ${mistura}[dataFim]
@@ -312,14 +292,6 @@ Preencha seção "Bombeio"
     [Documentation]    Keyword responsável pelo preenchimento da seção "Bombeio"
 
     ${bombeio}    Pegue massa de teste "bombeio" de "bdo_servicos"
-
-    # ${bombeio}    Create Dictionary    dataInicio=01/01/2024
-    # ...                                horaInicio=00:00
-    # ...                                dataFim=01/01/2024
-    # ...                                horaFim=23:59
-    # ...                                volume=123
-    # ...                                pressao=123
-    # ...                                vazao=123
 
     Type Text                  css=#dataInicio_bombeioBSER    ${bombeio}[dataInicio]
     Type Text                  css=#horaInicio_bombeioBSER    ${bombeio}[horaInicio]
@@ -394,9 +366,6 @@ Preencha seção "Registro de Anomalias"
     [Documentation]    Keyword responsável pelo preenchimento da seção "Registro de Anomalias"
 
     ${anomalia}    Pegue massa de teste "anomalia" de "bdo_servicos"
-    
-    # ${anomalia}    Create Dictionary    data=01/01/2024
-    # ...                                 descricao=Lobo guará na plataforma!
 
     ${temp}    Get Text    xpath=//span[text()='Registro de Anomalias']/../..//button[contains(@class,'p-button')][@disabled]
     IF    '${temp}' == 'Não'
