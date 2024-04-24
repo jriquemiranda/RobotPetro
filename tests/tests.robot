@@ -25,7 +25,15 @@ Get Variable
     Log To Console    Agora esse tambem deve vir filtrado ${código}
 
 Teste de JSON
-    ${pessoalequipamento}    Pegue massa de teste "pessoalequipamento" de "bdo_servicos"
-    ${etapas}    Set Variable    ${pessoalequipamento}[etapas]
+    ${json}    Pegue massa de teste "criar" de "bdo_servicos"
+    ${etapas}    Set Variable    ${json}[pessoalequipamento][etapas]
 
-    Log To Console    ${etapas}
+    Log To Console    ${\n}${etapas}
+
+Teste FOR JSON
+    ${json}    Pegue massa de teste "criar" de "bdo_servicos"
+    ${teste}    Set Variable    ${json}[pessoalequipamento][produtos]
+    FOR    ${element}    IN    ${teste}
+        Log To Console    ${\n}${element}
+    END
+    Log To Console    ${\n}${teste}

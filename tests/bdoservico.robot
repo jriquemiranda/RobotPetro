@@ -15,6 +15,8 @@ CT.BDOSERV.001.0 - Cadastrar um BDO de Serviço
     [Documentation]    Teste
     [Tags]    Feliz
 
+    ${servico}    Pegue massa de teste "criar" de "bdo_servicos"
+
     Acesse pagina "bdo-de-servico"
     Verifique tag <h1> com "BDO de Serviço"
 
@@ -23,7 +25,7 @@ CT.BDOSERV.001.0 - Cadastrar um BDO de Serviço
     Verifique tag <h1> com "BDO de Serviço - Cadastro"
 
     Clique na seção "Cabeçalho"
-    Preencha seção "Cabeçalho"
+    Preencha seção "Cabeçalho" com ${servico}[cabecalho]
     Clique no botão "Salvar" do "Cabeçalho"
     Escolha o botão "Sim" do modal "Sucesso"
 
@@ -40,7 +42,7 @@ CT.BDOSERV.003.0 - Preencher um BDO de Serviço
     [Documentation]    Teste
     [Tags]    Feliz
 
-    ${pessoalequipamento}    Pegue massa de teste "pessoalequipamento" de "bdo_servicos"
+    ${servico}    Pegue massa de teste "criar" de "bdo_servicos"
 
     Acesse pagina "bdo-de-servico"    
     Verifique tag <h1> com "BDO de Serviço"
@@ -51,57 +53,68 @@ CT.BDOSERV.003.0 - Preencher um BDO de Serviço
     Clique na seção "Cabeçalho"         
                                   
     Clique na seção "Pessoal e Equipamento"
-    Preencha e salve as subseções "Pessoal e Equipamento" com ${pessoalequipamento}
+    Preencha e salve as subseções "Pessoal e Equipamento" com ${servico}[pessoalequipamento]
+    Verifique as subseções "Pessoal e Equipamento" com ${servico}[pessoalequipamento]
     
     Clique na seção "Mobilização"
-    Preencha seção "Mobilização"
+    Preencha seção "Mobilização" com ${servico}[mobilizacao]
     Clique no botão "Salvar" da seção "Mobilização"
     Clique no botão "OK" do modal "Sucesso"
+    Verifique seção "Mobilização" usando ${servico}[mobilizacao]
     
     Clique na seção "Montagem"
-    Preencha seção "Montagem"
+    Preencha seção "Montagem" com ${servico}[montagem]
     Clique no botão "Salvar" da seção "Montagem"
     Clique no botão "OK" do modal "Sucesso"
+    Verifique seção "Montagem" usando ${servico}[montagem]
     
     Clique na seção "Carregamento"
-    Preencha seção "Carregamento"
+    Preencha seção "Carregamento" com ${servico}[carregamento]
     Clique no botão "Salvar" da seção "Carregamento"
     Clique no botão "OK" do modal "Sucesso"
+    Verifique seção "Carregamento" usando ${servico}[carregamento]
     
     Clique na seção "Mistura"
-    Preencha seção "Mistura"
+    Preencha seção "Mistura" com ${servico}[mistura]
     Clique no botão "Salvar" da seção "Mistura"
-    Clique no botão "OK" do modal "Sucesso"    
+    Clique no botão "OK" do modal "Sucesso"
+    Verifique seção "Mistura" usando ${servico}[mistura]
 
     Clique na seção "Bombeio"
-    Preencha seção "Bombeio"
+    Preencha seção "Bombeio" com ${servico}[bombeio]
     Clique no botão "Salvar" da seção "Bombeio"
     Clique no botão "OK" do modal "Sucesso"
-    Inclua foto de anexo na seção "Bombeio"
-    Verifique foto de anexo na seção "Bombeio"
+    Inclua foto de anexo na seção "Bombeio" usando ${servico}[anexos]
+    Verifique seção "Bombeio" usando ${servico}[bombeio]
+    Verifique foto de anexo na seção "Bombeio" usando ${servico}[anexos]
 
     Clique na seção "Aguardo"
-    Preencha seção "Aguardo"
+    Preencha seção "Aguardo" com ${servico}[aguardo]
     Clique no botão "Salvar" da seção "Aguardo"
     Clique no botão "OK" do modal "Sucesso"
+    Verifique seção "Aguardo" usando ${servico}[aguardo]
 
     Clique na seção "Desmontagem"
-    Preencha seção "Desmontagem"
+    Preencha seção "Desmontagem" com ${servico}[desmontagem]
     Clique no botão "Salvar" da seção "Desmontagem"
     Clique no botão "OK" do modal "Sucesso"
+    Verifique seção "Desmontagem" usando ${servico}[desmontagem]
 
     Clique na seção "Registro de Anomalias"
-    Preencha seção "Registro de Anomalias"
+    Preencha seção "Registro de Anomalias" com ${servico}[anomalia]
     Clique no botão "Salvar" da seção "Registro de Anomalias"
     Clique no botão "OK" do modal "Sucesso"
-    Inclua comentário na seção "Registro de Anomalias"
-    Inclua foto de anexo na seção "Registro de Anomalias"
-    Verifique comentário na seção "Registro de Anomalias"
-    Verifique foto de anexo na seção "Registro de Anomalias"
+    Inclua comentário na seção "Registro de Anomalias" usando ${servico}[comentarios]
+    Inclua foto de anexo na seção "Registro de Anomalias" usando ${servico}[anexos]
+    Verifique seção "Registro de Anomalias" usando ${servico}[anomalia]
+    Verifique comentário na seção "Registro de Anomalias" usando ${servico}[comentarios]
+    Verifique foto de anexo na seção "Registro de Anomalias" usando ${servico}[anexos]
 
 CT.BDOSERV.004.0 - Editar um BDO de Serviço
     [Documentation]    Teste
     [Tags]    Feliz
+
+    ${servico}    Pegue massa de teste "criar" de "bdo_servicos"
 
     Acesse pagina "bdo-de-servico"    
     Verifique tag <h1> com "BDO de Serviço"
@@ -115,54 +128,61 @@ CT.BDOSERV.004.0 - Editar um BDO de Serviço
     
     Clique na seção "Mobilização"
     Edite o registro da seção "Mobilização"
-    Preencha seção "Mobilização"
+    Preencha seção "Mobilização" com ${servico}[mobilizacao]
     Clique no botão "Salvar" da seção "Mobilização"
     Clique no botão "OK" do modal "Sucesso"
+    Verifique seção "Mobilização" usando ${servico}[mobilizacao]
     
     Clique na seção "Montagem"
     Edite o registro da seção "Montagem"
-    Preencha seção "Montagem"
+    Preencha seção "Montagem" com ${servico}[montagem]
     Clique no botão "Salvar" da seção "Montagem"
     Clique no botão "OK" do modal "Sucesso"
     
     Clique na seção "Carregamento"
     Edite o registro da seção "Carregamento"
-    Preencha seção "Carregamento"
+    Preencha seção "Carregamento" com ${servico}[carregamento]
     Clique no botão "Salvar" da seção "Carregamento"
     Clique no botão "OK" do modal "Sucesso"
+    Verifique seção "Carregamento" usando ${servico}[carregamento]
     
     Clique na seção "Mistura"
     Edite o registro da seção "Mistura"
-    Preencha seção "Mistura"
+    Preencha seção "Mistura" com ${servico}[mistura]
     Clique no botão "Salvar" da seção "Mistura"
-    Clique no botão "OK" do modal "Sucesso"    
+    Clique no botão "OK" do modal "Sucesso"
+    Verifique seção "Mistura" usando ${servico}[mistura]
 
     Clique na seção "Bombeio"
     Edite o registro da seção "Bombeio"
-    Preencha seção "Bombeio"
+    Preencha seção "Bombeio" com ${servico}[bombeio]
     Clique no botão "Salvar" da seção "Bombeio"
     Clique no botão "OK" do modal "Sucesso"
-    Verifique foto de anexo na seção "Bombeio"
+    Verifique seção "Bombeio" usando ${servico}[bombeio]
+    Verifique foto de anexo na seção "Bombeio" usando ${servico}[anexos]
 
     Clique na seção "Aguardo"
     Edite o registro da seção "Aguardo"
-    Preencha seção "Aguardo"
+    Preencha seção "Aguardo" com ${servico}[aguardo]
     Clique no botão "Salvar" da seção "Aguardo"
     Clique no botão "OK" do modal "Sucesso"
+    Verifique seção "Aguardo" usando ${servico}[aguardo]
 
     Clique na seção "Desmontagem"
     Edite o registro da seção "Desmontagem"
-    Preencha seção "Desmontagem"
+    Preencha seção "Desmontagem" com ${servico}[desmontagem]
     Clique no botão "Salvar" da seção "Desmontagem"
     Clique no botão "OK" do modal "Sucesso"
+    Verifique seção "Desmontagem" usando ${servico}[desmontagem]
 
     Clique na seção "Registro de Anomalias"
     Edite o registro da seção "Registro de Anomalias"
-    Preencha seção "Registro de Anomalias"
+    Preencha seção "Registro de Anomalias" com ${servico}[anomalia]
     Clique no botão "Salvar" da seção "Registro de Anomalias"
     Clique no botão "OK" do modal "Sucesso"
-    Verifique comentário na seção "Registro de Anomalias"
-    Verifique foto de anexo na seção "Registro de Anomalias"
+    Verifique seção "Registro de Anomalias" usando ${servico}[anomalia]
+    Verifique comentário na seção "Registro de Anomalias" usando ${servico}[comentarios]
+    Verifique foto de anexo na seção "Registro de Anomalias" usando ${servico}[anexos]
 
 CT.BDOSERV.005.0 - Visualizar um BDO de Serviço
     [Documentation]    Teste
@@ -229,8 +249,7 @@ CT.BDOSERV.008.0 - Remover (Cancelar) um BDO de Serviço
 
 
 CT.BDOSERV.000.0 - D'Teste
-
-    ${pessoalequipamento}    Pegue massa de teste "pessoalequipamento" de "bdo_servicos"
+    ${servico}    Pegue massa de teste "criar" de "bdo_servicos"
 
     Acesse pagina "bdo-de-servico"    
     Verifique tag <h1> com "BDO de Serviço"
@@ -238,13 +257,22 @@ CT.BDOSERV.000.0 - D'Teste
     Clique no menu e escolha a opção "Editar"
     Verifique código cadastrado
     
-    Clique na seção "Cabeçalho"         
-                                  
-    Clique na seção "Pessoal e Equipamento"
+    Clique na seção "Cabeçalho"                                  
+    Clique na seção "Pessoal e Equipamento"    
+    Clique na seção "Mobilização"    
+    Clique na seção "Montagem"    
+    Clique na seção "Carregamento"    
+    Clique na seção "Mistura"
+    Clique na seção "Bombeio"
+    Clique na seção "Aguardo"
+    Clique na seção "Desmontagem"
 
-    Preenche subseção "Equipamentos" com ${pessoalequipamento}[equipamentos]
-    Sleep    3
-    Clique no botão "Salvar" da seção "Pessoal e Equipamento"
+    Clique na seção "Registro de Anomalias"
+    Edite o registro da seção "Registro de Anomalias"
+    Preencha seção "Registro de Anomalias" com ${servico}[anomalia]
+    Clique no botão "Salvar" da seção "Registro de Anomalias"
     Clique no botão "OK" do modal "Sucesso"
+    Verifique seção "Registro de Anomalias" usando ${servico}[anomalia]
+    
 
     Sleep    5

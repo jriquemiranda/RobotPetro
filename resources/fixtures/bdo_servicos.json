@@ -1,101 +1,117 @@
 {
-    "cabecalho":{
-        "projeto":"123456",
-        "zona":"10",
-        "sonda":"SPT-PR-01",
-        "os":"OÇ TESTE",
-        "sa":"ÇA TESTE",
-        "supoper":"ABDON LIMA GOES NETO",
-        "supsond":"ZILMAR CAFE SOBRINHO",
-        "amem":"654321"
-    },
-    "pessoalequipamento":{
-        "etapas":{
-            "inicioAtividadeData":"01/01/2024",
-            "inicioAtividadeHora":"00:00",
-            "finalAtividadeData":"02/02/2024",
-            "finalAtividadeHora":"00:00",
-            "layoutLocacaoData":"02/02/2024",
-            "layoutLocacaoHora":"00:00",
-            "posicionamentoTanquesData":"02/02/2024",
-            "posicionamentoTanquesHora":"00:00"
+"criar":
+    {
+        "cabecalho":{
+            "projeto":{
+                "projeto":"123456",
+                "campo":"BIRIBA",
+                "poco":"BB-0011",
+                "ativo":"Bahia",
+                "operacao":"Acidificação"
+            },
+            "zona":"10",
+            "sonda":"SPT-PR-01",
+            "os":"OÇ TESTE",
+            "sa":"ÇA TESTE",
+            "supoper":"ABDON LIMA GOES NETO",
+            "supsond":"ZILMAR CAFE SOBRINHO",
+            "amem":"654321"
         },
-        "pessoal":{
-            "origem":"Interno",
-            "pessoa":"ABDON LIMA GOES NETO"
+        "pessoalequipamento":{
+            "etapas":{
+                "inicioAtividadeData":"01/01/2024",
+                "inicioAtividadeHora":"00:00",
+                "finalAtividadeData":"02/02/2024",
+                "finalAtividadeHora":"00:00",
+                "layoutLocacaoData":"02/02/2024",
+                "layoutLocacaoHora":"00:00",
+                "posicionamentoTanquesData":"02/02/2024",
+                "posicionamentoTanquesHora":"00:00"
+            },
+            "pessoal":{
+                "origem":"Interno",
+                "pessoa":"ABDON LIMA GOES NETO"
+            },
+            "equipamentos":{
+                "local":"Bahia",
+                "equipamento":"Equipamento de Teste"
+            },
+            "produtos":{
+                "local":"Bahia",
+                "produto":"Produto de Teste",
+                "quantidade":"123",
+                "lote":"ABC"
+            }
         },
-        "equipamentos":{
-            "local":"Bahia",
+        "mobilizacao":{
+            "origemNome":"Oiapoque",
+            "dataInicio":"01/01/2024",
+            "horaInicio":"00:00",
+            "destinoNome":"Chuí",
+            "dataFim":"01/01/2024",
+            "horaFim":"23:59",
             "equipamento":"Equipamento de Teste"
+
         },
-        "produtos":{
-            "local":"Bahia",
-            "produto":"Produto de Teste",
+        "montagem":{
+            "dataInicio":"01/01/2024",
+            "horaInicio":"00:00",
+            "dataFim":"01/01/2024",
+            "horaFim":"23:59",
+            "descricaoOutros":"Montageste"
+        },
+        "carregamento":{
+            "dataInicio":"01/01/2024",
+            "horaInicio":"00:00",
+            "dataFim":"01/01/2024",
+            "horaFim":"23:59",
             "quantidade":"123",
-            "lote":"ABC"
+            "descricao":"Carregamenteste A",
+            "tipo":"Tipeste A"
+        },
+        "mistura":{
+            "dataInicio":"01/01/2024",
+            "horaInicio":"00:00",
+            "dataFim":"01/01/2024",
+            "horaFim":"23:59",
+            "volume":"123",
+            "peso":"123",
+            "descricao":"Mistureste A"
+        },
+        "bombeio":{
+            "dataInicio":"01/01/2024",
+            "horaInicio":"00:00",
+            "dataFim":"01/01/2024",
+            "horaFim":"23:59",
+            "volume":"123",
+            "pressao":"123",
+            "vazao":"123",
+            "descricao":"Bombeste A"
+        },
+        "aguardo":{
+            "dataInicio":"01/01/2024",
+            "horaInicio":"00:00",
+            "dataFim":"01/01/2024",
+            "horaFim":"23:59",
+            "descricao":"Aguardeste A"
+        },
+        "desmontagem":{
+            "dataInicio":"01/01/2024",
+            "horaInicio":"00:00",
+            "dataFim":"01/01/2024",
+            "horaFim":"23:59",
+            "descricao":"Desmonteste"
+        },
+        "anomalia":{
+            "data":"01/01/2024",
+            "descricao":"Anomaleste"
+        },
+        "anexos":{
+            "nome":"Teste.png",
+            "caminho":"C:\\DocTestes\\Teste.png"
+        },
+        "comentarios":{
+            "comentario":"Chamar o IBAMA!!!"
         }
-    },
-    "mobilizacao":{
-        "origemNome":"Oiapoque",
-        "dataInicio":"01/01/2024",
-        "horaInicio":"00:00",
-        "destinoNome":"Chuí",
-        "dataFim":"01/01/2024",
-        "horaFim":"23:59"
-    },
-    "montagem":{
-        "dataInicio":"01/01/2024",
-        "horaInicio":"00:00",
-        "dataFim":"01/01/2024",
-        "horaFim":"23:59",
-        "descricaoOutros":"Montagem da rebimboca da parafuseta"
-    },
-    "carregamento":{
-        "dataInicio":"01/01/2024",
-        "horaInicio":"00:00",
-        "dataFim":"01/01/2024",
-        "horaFim":"23:59",
-        "quantidade":"123"
-    },
-    "mistura":{
-        "dataInicio":"01/01/2024",
-        "horaInicio":"00:00",
-        "dataFim":"01/01/2024",
-        "horaFim":"23:59",
-        "volume":"123",
-        "peso":"123"
-    },
-    "bombeio":{
-        "dataInicio":"01/01/2024",
-        "horaInicio":"00:00",
-        "dataFim":"01/01/2024",
-        "horaFim":"23:59",
-        "volume":"123",
-        "pressao":"123",
-        "vazao":"123"
-    },
-    "aguardo":{
-        "dataInicio":"01/01/2024",
-        "horaInicio":"00:00",
-        "dataFim":"01/01/2024",
-        "horaFim":"23:59",
-        "descricao":"Perando..."
-    },
-    "desmontagem":{
-        "dataInicio":"01/01/2024",
-        "horaInicio":"00:00",
-        "dataFim":"01/01/2024",
-        "horaFim":"23:59",
-        "descricao":"Desmontagem da montagem!"},
-    "anomalia":{
-        "data":"01/01/2024",
-        "descricao":"Lobo guará na plataforma!"
-    },
-    "anexos":{
-        "nome":"Teste.png",
-        "caminho":"C:\\DocTestes\\Teste.png"
-    },
-    "comentarios":{
-        "comentario":"Chamar o IBAMA!!!"
     }
 }
