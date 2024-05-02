@@ -106,7 +106,7 @@ Edite o registro da seção "${seção}"
 Preencha seção "Cabeçalho" com ${cabecalho}
     [Documentation]    Keyword responsável pelo preenchimento da seção "Cabeçalho" 
 
-    # ${cabecalho}    Pegue massa de teste "cabecalho" de "bdo_servicos"
+    # ${cabecalho}    Retorna massa de teste "cabecalho" de "bdo_servicos"
 
     Click        xpath=//label[text()='Projeto']/.. >> css=.p-dropdown
     Click        xpath=//li[text()='${cabecalho}[projeto][projeto]']

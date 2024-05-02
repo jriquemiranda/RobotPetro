@@ -15,7 +15,7 @@ CT.BDOSERV.001.0 - Cadastrar um BDO de Serviço
     [Documentation]    Teste
     [Tags]    Feliz
 
-    ${servico}    Pegue massa de teste "criar" de "bdo_servicos"
+    ${servico}    Retorna massa de teste "criar" de "bdo_servicos"
 
     Acesse pagina "bdo-de-servico"
     Verifique tag <h1> com "BDO de Serviço"
@@ -42,7 +42,7 @@ CT.BDOSERV.003.0 - Preencher um BDO de Serviço
     [Documentation]    Teste
     [Tags]    Feliz
 
-    ${servico}    Pegue massa de teste "criar" de "bdo_servicos"
+    ${servico}    Retorna massa de teste "criar" de "bdo_servicos"
 
     Acesse pagina "bdo-de-servico"    
     Verifique tag <h1> com "BDO de Serviço"
@@ -114,7 +114,7 @@ CT.BDOSERV.004.0 - Editar um BDO de Serviço
     [Documentation]    Teste
     [Tags]    Feliz
 
-    ${servico}    Pegue massa de teste "criar" de "bdo_servicos"
+    ${servico}    Retorna massa de teste "criar" de "bdo_servicos"
 
     Acesse pagina "bdo-de-servico"    
     Verifique tag <h1> com "BDO de Serviço"
@@ -249,7 +249,7 @@ CT.BDOSERV.008.0 - Remover (Cancelar) um BDO de Serviço
 
 
 CT.BDOSERV.000.0 - D'Teste
-    ${servico}    Pegue massa de teste "criar" de "bdo_servicos"
+    ${servico}    Retorna massa de teste "criar" de "bdo_servicos"
 
     Acesse pagina "bdo-de-servico"    
     Verifique tag <h1> com "BDO de Serviço"
