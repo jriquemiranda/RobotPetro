@@ -32,3 +32,11 @@ Verifique tag <${tag}> com "${mensagem}"
 Pegue massa de teste "${cenario}" de "${arquivo}"
     ${json}    Load Json From File    ${EXECDIR}/resources/fixtures/${arquivo}.json    encoding=UTF-8
     RETURN    ${json}[${cenario}]
+
+Retorne o elemento da ${tabela} cruzando ${coluna} com ${linha}
+    ${ColInd}    Get Table Cell Index    xpath=${tabela} >> ${coluna}
+    ${LinInd}    Get Table Row Index    xpath=${tabela} >> ${linha}
+
+    ${TabelaElemento}    Get Table Cell Element    xpath=${tabela}    ${ColInd}    ${LinInd}
+    ${elemento}    Get Text    ${TabelaElemento}
+    RETURN    ${elemento}

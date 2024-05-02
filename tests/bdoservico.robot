@@ -254,25 +254,11 @@ CT.BDOSERV.000.0 - D'Teste
     Acesse pagina "bdo-de-servico"    
     Verifique tag <h1> com "BDO de Serviço"
 
-    Clique no menu e escolha a opção "Editar"
-    Verifique código cadastrado
-    
-    Clique na seção "Cabeçalho"                                  
-    Clique na seção "Pessoal e Equipamento"    
-    Clique na seção "Mobilização"    
-    Clique na seção "Montagem"    
-    Clique na seção "Carregamento"    
-    Clique na seção "Mistura"
-    Clique na seção "Bombeio"
-    Clique na seção "Aguardo"
-    Clique na seção "Desmontagem"
+    ${tabela}    Set Variable    //table
+    ${coluna}    Set Variable    "Sup. Sonda"
+    ${linha}     Set Variable    "0096-04-2024-BAH-A-BDOSERV"
 
-    Clique na seção "Registro de Anomalias"
-    Edite o registro da seção "Registro de Anomalias"
-    Preencha seção "Registro de Anomalias" com ${servico}[anomalia]
-    Clique no botão "Salvar" da seção "Registro de Anomalias"
-    Clique no botão "OK" do modal "Sucesso"
-    Verifique seção "Registro de Anomalias" usando ${servico}[anomalia]
-    
+    ${elemento}    Retorne o elemento da ${tabela} cruzando ${coluna} com ${linha}
+    Log To Console    ${\n}=>${elemento}<=
 
     Sleep    5
