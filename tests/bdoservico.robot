@@ -11,7 +11,7 @@ Test Teardown           Encerre sessão
 #     Acesse pagina "bdo-de-servico"
 #     Verifique <h1> com "BDO de Serviço"
 
-CT.BDOSERV.001.0 - Cadastrar um BDO de Serviço
+CT.BDOSERV.001.0 - Cadastrar BDO de Serviço
     [Documentation]    Teste
     [Tags]    Feliz
 
@@ -29,7 +29,7 @@ CT.BDOSERV.001.0 - Cadastrar um BDO de Serviço
     Clique no botão "Salvar" do "Cabeçalho"
     Escolha o botão "Sim" do modal "Sucesso"
 
-CT.BDOSERV.002.0 - Listar um BDO de Serviço
+CT.BDOSERV.002.0 - Listar BDO de Serviço cadastrado
     [Documentation]    Teste
     [Tags]    Feliz
 
@@ -38,7 +38,7 @@ CT.BDOSERV.002.0 - Listar um BDO de Serviço
 
     Verifique status "Novo"
 
-CT.BDOSERV.003.0 - Preencher um BDO de Serviço
+CT.BDOSERV.003.0 - Preencher BDO de Serviço cadastrado
     [Documentation]    Teste
     [Tags]    Feliz
 
@@ -207,6 +207,7 @@ CT.BDOSERV.006.0 - Imprimir um BDO de Serviço
 CT.BDOSERV.007.1 - Encerrar um BDO de Serviço 'Com Sucesso'
     [Documentation]    Teste
     [Tags]    ComSucesso
+
     Acesse pagina "bdo-de-servico"
     Verifique tag <h1> com "BDO de Serviço"
 

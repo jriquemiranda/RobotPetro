@@ -57,19 +57,38 @@ Clique no botão "${botão}" do modal "${modal}"
 
 Verifique status "${status}"
     [Documentation]    Keyword responsável por verificar o status
+    
+    Filtre pelo código ${codigo}
 
-    Get Text    xpath=//td[text()='${codigo}']/../td[3]    equals    ${status}
+    ${tabela}    Set Variable    //table
+    ${coluna}    Set Variable    "Status"
+    ${linha}     Set Variable    "${codigo}"
+
+    ${xpath}    Retorna o xpath da ${tabela} cruzando ${coluna} com ${linha}
+
+    Get Text    ${xpath}    equals    ${status}
 
 Verifique situação "${situação}"
     [Documentation]    Keyword responsável por verificar a situação
 
-    Get Text    xpath=//td[text()='${codigo}']/../td[14]    equals    ${situação}
+    Filtre pelo código ${codigo}
+
+    ${tabela}    Set Variable    //table
+    ${coluna}    Set Variable    "Situação"
+    ${linha}     Set Variable    "${codigo}"
+
+    ${xpath}    Retorna o xpath da ${tabela} cruzando ${coluna} com ${linha}
+
+    Get Text    ${xpath}    equals    ${situação}
+
+Filtre pelo código ${codigo}
+    Type Text                  xpath=(//input[@placeholder='Filtrar'])[1]    ${codigo}
+    Wait For Elements State    xpath=//span[text()='Exibindo do 1 ao 1 de 1 registros']    visible    3
 
 Clique no menu e escolha a opção "${opção}"
     [Documentation]    Keyword responsável por selecionar a opção do menu hamburger
 
-    Type Text                  xpath=(//input[@placeholder='Filtrar'])[1]    ${codigo}
-    Wait For Elements State    xpath=//span[text()='Exibindo do 1 ao 1 de 1 registros']    visible    3
+    Filtre pelo código ${codigo}
 
     Click                      xpath=//td[text()='${codigo}']/../td[1]            
     Click                      xpath=//span[text()='${opção}']    

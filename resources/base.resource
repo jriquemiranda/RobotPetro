@@ -40,3 +40,10 @@ Retorna o elemento da ${tabela} cruzando ${coluna} com ${linha}
     ${TabelaElemento}    Get Table Cell Element    xpath=${tabela}    ${ColInd}    ${LinInd}
     ${elemento}    Get Text    ${TabelaElemento}
     RETURN    ${elemento}
+
+Retorna o xpath da ${tabela} cruzando ${coluna} com ${linha}
+    ${ColInd}    Get Table Cell Index    xpath=${tabela} >> ${coluna}
+    ${LinInd}    Get Table Row Index    xpath=${tabela} >> ${linha}
+
+    ${TabelaElemento}    Get Table Cell Element    xpath=${tabela}    ${ColInd}    ${LinInd}
+    RETURN    ${TabelaElemento}
