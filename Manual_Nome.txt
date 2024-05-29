@@ -43,7 +43,7 @@ Padrão da listagem de módulos do PetroDigital
     - SGC       - SGC
     - PASSERV   - Passagem de Serviço
 
-Padrão de numeraçaõ do cenário (CLER)
+Padrão de numeraçaõ do cenário (CLERO)
     - 001       - Cadastrar
     - 002       - Listar
     - 003       - Editar

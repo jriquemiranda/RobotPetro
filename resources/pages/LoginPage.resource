@@ -13,9 +13,9 @@ Abre navegador
     New Context        viewport={'width': 1760, 'height': 900}
     New Page           ${BASE_URL}
     
-Submeta formulario com as credenciais
-    Fill Text    css=#login                  ${CREDENCIAL}[LOGIN]
-    Fill Text    css=input[name=password]    ${CREDENCIAL}[SENHA]
+Submeta formulario com as ${credenciais}
+    Fill Text    css=#login                  ${credenciais}[login]
+    Fill Text    css=input[name=password]    ${credenciais}[senha]
 
     Click        css=button[type=submit] >> text=Entrar
 
@@ -30,9 +30,12 @@ Modal "${mensagem}" clique em "${botão}"
         Click    css=button[type=button] >> text=${botão}
     END
 
+Verifique mensagem "${mensagem}" no modal de login inválido
+    Get Text    h2#swal2-title    contains    ${mensagem}
+
 Inicie sessão
     Abre navegador
-    Submeta formulario com as credenciais
+    Submeta formulario com as ${CREDENCIAL}
     Se, Modal "Sessão ocupada!" clique em "Sim"
     Modal "Verifique sua senha" clique em "OK"
     Verifique usuário logado
