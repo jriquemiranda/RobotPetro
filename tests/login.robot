@@ -45,7 +45,7 @@ CT.INIT.001.3 - Efetuar login inválido, login em branco, no PetroDigital
     [Documentation]    Teste de login usuário inv
     [Tags]    Não Feliz
 
-    ${credenciais}    Create Dictionary    login=   senha=qwe123
+    ${credenciais}    Create Dictionary    login=   senha=123
 
     Abre navegador
     Verifique tag <h1> com "Entre com suas credenciais"
