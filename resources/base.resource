@@ -3,6 +3,9 @@ Documentation            Elementos e ações comuns entre as páginas
 
 Library            Browser
 Library            JSONLibrary
+Library            DatabaseLibrary
+
+Library            ../resources/libs/MyLibs.py
 
 Resource           ../resources/env.resource
 

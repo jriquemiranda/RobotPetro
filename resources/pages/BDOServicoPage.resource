@@ -9,7 +9,7 @@ Resource           ../base.resource
 
 *** Variables ***
 
-${codigo}    0075-04-2024-BAH-A-BDOSERV                                                                # Isso é apenas temporário!!!
+# ${codigo}    0173-05-2024-BAH-A-BDOSERV                                                                # Isso é apenas temporário!!!
 
 *** Keywords ***
 
@@ -37,14 +37,16 @@ Escolha o botão "${botão}" do modal "${modal}"
         ${texto}    Get Text    xpath=//h2[contains(.,'Código: ')]
         ${dic_texto}     Split String    ${texto}     ${SPACE}
         ${codigo}  Set Variable  ${dic_texto}[1]
-        Set Suite Variable    ${codigo}
+        # Set Suite Variable    ${codigo}
+        Set Test Variable    ${codigo}
 
     ELSE IF    "${botão}" == "Não"
         ${texto}    Get Text    css=#swal2-html-container
         ${dic_texto}     Split String    ${texto}     (
         ${dic_texto}     Split String    ${dic_texto}[1]     )
         ${codigo}  Set Variable  ${dic_texto}[0]
-        Set Suite Variable    ${codigo}
+        # Set Suite Variable    ${codigo}
+        Set Test Variable    ${codigo}
         
         Click    css=.swal2-styled >> text='${botão}'
     END
@@ -113,12 +115,22 @@ Verifique impressão
     [Documentation]    Keyword responsável por verificar a impressão
 
     ${status}    Wait For Response
-    Pass Execution If    ${status}[status] == 200    OK
+    Should Be True    ${status}[status] == 200
 
 Edite o registro da seção "${seção}"
     [Documentation]    Keyword responsável por verificar o código do BDO de Serviço
 
     Click        xpath=//span[text()='${seção}']/../..//button[@title='Editar']
+
+Cancele BDO cadastrado via MyLibs
+    Log To Console    ${\n}${codigo}
+    Cancelar BDO Servico    ${ACESSOBD}    ${codigo}
+
+Cancele BDO cadastrado via BD
+    Connect To Database    ${ACESSOBD}[MODULE]    ${ACESSOBD}[DATABASE]    ${ACESSOBD}[USER]    ${ACESSOBD}[PASSWORD]    ${ACESSOBD}[HOST]    ${ACESSOBD}[PORT]
+    ${codigo}    Create List    ${codigo}
+    Execute Sql String    UPDATE bdo_servico bs SET status = 'CANCELADO', situacao = 'CANCELADO' WHERE codigo = %s    parameters=${codigo}
+    Disconnect From Database
 
 ### CABEÇALHO ###
 
@@ -128,7 +140,8 @@ Preencha seção "Cabeçalho" com ${cabecalho}
     # ${cabecalho}    Retorna massa de teste "cabecalho" de "bdo_servicos"
 
     Click        xpath=//label[text()='Projeto']/.. >> css=.p-dropdown
-    Click        xpath=//li[text()='${cabecalho}[projeto][projeto]']
+    Sleep        1
+    Click        css=li[aria-label='${cabecalho}[projeto][projeto]']
 
     Verifique dados "Projeto" usando ${cabecalho}[projeto]
 
@@ -142,7 +155,7 @@ Preencha seção "Cabeçalho" com ${cabecalho}
 
     Type Text    css=#sa_cabecalhoBSER    ${cabecalho}[sa]
 
-    Click        xpath=//label[text()='Sup. Operação']/.. >> css=.p-dropdown
+    Click        xpath=//label[text()='Sup.Operação']/.. >> css=.p-dropdown
     Click        xpath=//li[text()='${cabecalho}[supoper]']
 
     Click        xpath=//label[text()='Sup. Sonda']/.. >> css=.p-dropdown
@@ -153,10 +166,10 @@ Preencha seção "Cabeçalho" com ${cabecalho}
 Verifique dados "Projeto" usando ${projeto}
     [Documentation]    Keyword responsável pela verificação dos dados do "Projeto"
 
-    Wait For Elements State    css=input[value='${projeto}[campo]']       visible    1
-    Wait For Elements State    css=input[value='${projeto}[poco]']        visible    1
-    Wait For Elements State    css=input[value='${projeto}[ativo]']       visible    1
-    Wait For Elements State    css=input[value='${projeto}[operacao]']    visible    1
+    Wait For Elements State    xpath=//span[text()='${projeto}[campo]']       visible    3
+    Wait For Elements State    xpath=//span[text()='${projeto}[poco]']        visible    3
+    Wait For Elements State    xpath=//span[text()='${projeto}[ativo]']       visible    3
+    Wait For Elements State    xpath=//span[text()='${projeto}[operacao]']    visible    3
 
 Clique no botão "${botão}" do "Cabeçalho"
     [Documentation]    Keyword responsável por selecionar o botão de "???" da seção "Cabeçalho"
@@ -516,3 +529,94 @@ Verifique comentário na seção "${seção}" usando ${comentarios}
 
     Click                      xpath=//button[@aria-label='Close']
 
+
+
+
+
+
+
+
+
+
+
+
+### HELPER ###
+Crie um BDO com apenas o cabecalho usando ${json}
+    
+    Clique no botão "Adicionar"
+
+    Verifique tag <h1> com "BDO de Serviço - Cadastro"
+
+    Clique na seção "Cabeçalho"
+    Preencha seção "Cabeçalho" com ${json}[cabecalho]
+    Clique no botão "Salvar" do "Cabeçalho"
+    Escolha o botão "Não" do modal "Sucesso"
+
+Crie um BDO todo preenchido usando ${json}
+
+    Clique no botão "Adicionar"
+
+    Verifique tag <h1> com "BDO de Serviço - Cadastro"
+
+    Clique na seção "Cabeçalho"
+    Preencha seção "Cabeçalho" com ${json}[cabecalho]
+    Clique no botão "Salvar" do "Cabeçalho"
+    Escolha o botão "Sim" do modal "Sucesso"
+
+    Clique na seção "Pessoal e Equipamento"
+    Preencha e salve as subseções "Pessoal e Equipamento" com ${json}[pessoalequipamento]
+    Verifique as subseções "Pessoal e Equipamento" com ${json}[pessoalequipamento]
+    
+    Clique na seção "Mobilização"
+    Preencha seção "Mobilização" com ${json}[mobilizacao]
+    Clique no botão "Salvar" da seção "Mobilização"
+    Clique no botão "OK" do modal "Sucesso"
+    Verifique seção "Mobilização" usando ${json}[mobilizacao]
+    
+    Clique na seção "Montagem"
+    Preencha seção "Montagem" com ${json}[montagem]
+    Clique no botão "Salvar" da seção "Montagem"
+    Clique no botão "OK" do modal "Sucesso"
+    Verifique seção "Montagem" usando ${json}[montagem]
+    
+    Clique na seção "Carregamento"
+    Preencha seção "Carregamento" com ${json}[carregamento]
+    Clique no botão "Salvar" da seção "Carregamento"
+    Clique no botão "OK" do modal "Sucesso"
+    Verifique seção "Carregamento" usando ${json}[carregamento]
+    
+    Clique na seção "Mistura"
+    Preencha seção "Mistura" com ${json}[mistura]
+    Clique no botão "Salvar" da seção "Mistura"
+    Clique no botão "OK" do modal "Sucesso"
+    Verifique seção "Mistura" usando ${json}[mistura]
+
+    Clique na seção "Bombeio"
+    Preencha seção "Bombeio" com ${json}[bombeio]
+    Clique no botão "Salvar" da seção "Bombeio"
+    Clique no botão "OK" do modal "Sucesso"
+    Inclua foto de anexo na seção "Bombeio" usando ${json}[anexos]
+    Verifique seção "Bombeio" usando ${json}[bombeio]
+    Verifique foto de anexo na seção "Bombeio" usando ${json}[anexos]
+
+    Clique na seção "Aguardo"
+    Preencha seção "Aguardo" com ${json}[aguardo]
+    Clique no botão "Salvar" da seção "Aguardo"
+    Clique no botão "OK" do modal "Sucesso"
+    Verifique seção "Aguardo" usando ${json}[aguardo]
+
+    Clique na seção "Desmontagem"
+    Preencha seção "Desmontagem" com ${json}[desmontagem]
+    Clique no botão "Salvar" da seção "Desmontagem"
+    Clique no botão "OK" do modal "Sucesso"
+    Verifique seção "Desmontagem" usando ${json}[desmontagem]
+
+    Clique na seção "Registro de Anomalias"
+    Preencha seção "Registro de Anomalias" com ${json}[anomalia]
+    Clique no botão "Salvar" da seção "Registro de Anomalias"
+    Clique no botão "OK" do modal "Sucesso"
+    Inclua comentário na seção "Registro de Anomalias" usando ${json}[comentarios]
+    Inclua foto de anexo na seção "Registro de Anomalias" usando ${json}[anexos]
+    Verifique seção "Registro de Anomalias" usando ${json}[anomalia]
+    Verifique comentário na seção "Registro de Anomalias" usando ${json}[comentarios]
+    Verifique foto de anexo na seção "Registro de Anomalias" usando ${json}[anexos]

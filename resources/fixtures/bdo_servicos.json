@@ -111,7 +111,106 @@
             "caminho":"C:\\DocTestes\\Teste.png"
         },
         "comentarios":{
-            "comentario":"Chamar o IBAMA!!!"
+            "comentario":"Comenteste"
+        }
+    },
+"editar":
+    {
+        "pessoalequipamento":{
+            "etapas":{
+                "inicioAtividadeData":"01/01/2024",
+                "inicioAtividadeHora":"00:00",
+                "finalAtividadeData":"02/02/2024",
+                "finalAtividadeHora":"00:00",
+                "layoutLocacaoData":"02/02/2024",
+                "layoutLocacaoHora":"00:00",
+                "posicionamentoTanquesData":"02/02/2024",
+                "posicionamentoTanquesHora":"00:00"
+            },
+            "pessoal":{
+                "origem":"Interno",
+                "pessoa":"ABDON LIMA GOES NETO"
+            },
+            "equipamentos":{
+                "local":"Bahia",
+                "equipamento":"Equipamento de Teste"
+            },
+            "produtos":{
+                "local":"Bahia",
+                "produto":"Produto de Teste",
+                "quantidade":"123",
+                "lote":"ABC"
+            }
+        },
+        "mobilizacao":{
+            "origemNome":"E-Oiapoque",
+            "dataInicio":"01/02/2024",
+            "horaInicio":"00:00",
+            "destinoNome":"E-Chuí",
+            "dataFim":"02/02/2024",
+            "horaFim":"00:00",
+            "equipamento":"Equipamento de Teste"
+
+        },
+        "montagem":{
+            "dataInicio":"01/02/2024",
+            "horaInicio":"00:00",
+            "dataFim":"02/02/2024",
+            "horaFim":"00:00",
+            "descricaoOutros":"E-Montageste"
+        },
+        "carregamento":{
+            "dataInicio":"01/02/2024",
+            "horaInicio":"00:00",
+            "dataFim":"02/02/2024",
+            "horaFim":"00:00",
+            "quantidade":"321",
+            "descricao":"Carregamenteste A",
+            "tipo":"Tipeste A"
+        },
+        "mistura":{
+            "dataInicio":"01/02/2024",
+            "horaInicio":"00:00",
+            "dataFim":"02/02/2024",
+            "horaFim":"00:00",
+            "volume":"321",
+            "peso":"321",
+            "descricao":"Mistureste A"
+        },
+        "bombeio":{
+            "dataInicio":"01/02/2024",
+            "horaInicio":"00:00",
+            "dataFim":"02/02/2024",
+            "horaFim":"00:00",
+            "volume":"321",
+            "pressao":"321",
+            "vazao":"321",
+            "descricao":"Bombeste A"
+        },
+        "aguardo":{
+            "dataInicio":"01/02/2024",
+            "horaInicio":"00:00",
+            "dataFim":"02/02/2024",
+            "horaFim":"00:00",
+            "descricao":"E-Aguardeste A"
+        },
+        "desmontagem":{
+            "dataInicio":"01/02/2024",
+            "horaInicio":"00:00",
+            "dataFim":"02/02/2024",
+            "horaFim":"00:00",
+            "descricao":"E-Desmonteste"
+        },
+        "anomalia":{
+            "data":"02/02/2024",
+            "descricao":"E-Anomaleste"
+        },
+        "anexos":{
+            "nome":"Teste.png",
+            "caminho":"C:\\DocTestes\\Teste.png"
+        },
+        "comentarios":{
+            "comentario":"Comenteste"
         }
     }
 }
