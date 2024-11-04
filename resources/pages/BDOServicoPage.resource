@@ -118,19 +118,33 @@ Verifique impressão
     Should Be True    ${status}[status] == 200
 
 Edite o registro da seção "${seção}"
-    [Documentation]    Keyword responsável por verificar o código do BDO de Serviço
+    [Documentation]    Keyword responsável por clicar no botão de editar na seção ???
 
     Click        xpath=//span[text()='${seção}']/../..//button[@title='Editar']
 
 Cancele BDO cadastrado via MyLibs
+    [Documentation]    Keyword responsável por cancelar um BDO de Serviço usando myLibs.py
+
     Log To Console    ${\n}${codigo}
     Cancelar BDO Servico    ${ACESSOBD}    ${codigo}
 
 Cancele BDO cadastrado via BD
-    Connect To Database    ${ACESSOBD}[MODULE]    ${ACESSOBD}[DATABASE]    ${ACESSOBD}[USER]    ${ACESSOBD}[PASSWORD]    ${ACESSOBD}[HOST]    ${ACESSOBD}[PORT]
-    ${codigo}    Create List    ${codigo}
-    Execute Sql String    UPDATE bdo_servico bs SET status = 'CANCELADO', situacao = 'CANCELADO' WHERE codigo = %s    parameters=${codigo}
-    Disconnect From Database
+    [Documentation]    Keyword responsável por cancelar um BDO de Serviço
+    
+    Acesse pagina "bdo-de-servico"
+    Verifique tag <h1> com "BDO de Serviço"
+
+    Clique no menu e escolha a opção "Cancelar"
+
+    Clique no botão "Sim" do modal "Cancelar BDO de Serviço"
+    Clique no botão "OK" do modal "Sucesso"
+
+    Verifique status "Cancelado"
+
+    # Connect To Database    ${ACESSOBD}[MODULE]    ${ACESSOBD}[DATABASE]    ${ACESSOBD}[USER]    ${ACESSOBD}[PASSWORD]    ${ACESSOBD}[HOST]    ${ACESSOBD}[PORT]
+    # ${codigo}    Create List    ${codigo}
+    # Execute Sql String    UPDATE bdo_servico bs SET status = 'CANCELADO', situacao = 'CANCELADO' WHERE codigo = %s    parameters=${codigo}
+    # Disconnect From Database
 
 ### CABEÇALHO ###
 
